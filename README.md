@@ -59,6 +59,7 @@
             padding: 20px 0; /* Függőleges belső térköz */
             line-height: 1.6; /* Sorok közötti távolság */
             width: 100%;
+            box-sizing: border-box;
         }
         a {
             color: #007BFF;
