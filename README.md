@@ -66,19 +66,19 @@
 </head>
 <body>
     <header>
-        <h1>Az Én Portfólióm</h1>
+        <h1>Emese Gojdar</h1>
         <nav>
-            <a href="#about">Rólam</a>
-            <a href="#projects">Projektek</a>
-            <a href="#contact">Kapcsolat</a>
+            <a href="#about">About me</a>
+            <a href="#projects">Gallery</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
     <section id="about">
-        <h2>Rólam</h2>
-        <p>Üdvözöllek! [Itt írhatsz magadról pár mondatot, például a szakmai hátteredről és érdeklődési köreidről.]</p>
+        <h2>About me</h2>
+        <p>Welcome [Itt írhatsz magadról pár mondatot, például a szakmai hátteredről és érdeklődési köreidről.]</p>
     </section>
     <section id="projects">
-        <h2>Projektek</h2>
+        <h2>Projects</h2>
         <div class="projects">
             <div class="project">
                 <h3>Projekt 1</h3>
@@ -98,15 +98,19 @@
         </div>
     </section>
     <section id="contact">
-        <h2>Kapcsolat</h2>
+        <h2>Contact</h2>
         <p>Keress meg az alábbi elérhetőségek egyikén:</p>
         <ul>
             <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
-            <li>Telefon: +36 20 123 4567</li>
+            <li>Social: </li>
         </ul>
     </section>
     <footer>
-        &copy; 2024 Az Én Portfólióm
-    </footer>
+        &copy; Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.
+        Department of Geoinformatics – Z_GIS
+Schillerstraße 30
+5020 Salzburg
+Austria 
+     </footer>
 </body>
 </html>
