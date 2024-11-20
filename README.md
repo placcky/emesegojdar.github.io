@@ -53,11 +53,11 @@
             text-align: center;
         }
         footer {
-            background-color: #ffb3b3;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            background-color: #d279a6; /* Sötétszürke háttér */
+            color: white; /* Fehér szöveg */
+            text-align: center; /* Középre igazítás */
+            padding: 20px 0; /* Függőleges belső térköz */
+            line-height: 1.6; /* Sorok közötti távolság */
         }
         a {
             color: #007BFF;
@@ -105,12 +105,12 @@
             <li>Social: </li>
         </ul>
     </section>
-    <footer>
-        &copy; Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.
-        Department of Geoinformatics – Z_GIS
-Schillerstraße 30
-5020 Salzburg
-Austria 
-     </footer>
+<footer>
+    &copy; Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
+    Department of Geoinformatics – Z_GIS<br>
+    Schillerstraße 30<br>
+    5020 Salzburg<br>
+    Austria
+</footer>
 </body>
 </html>
