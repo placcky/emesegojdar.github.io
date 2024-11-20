@@ -58,7 +58,7 @@
             text-align: center; /* Középre igazítás */
             padding: 20px 0; /* Függőleges belső térköz */
             line-height: 1.6; /* Sorok közötti távolság */
-            width: 100vw;
+            width: 100%;
             box-sizing: border-box;
         }
         a {
