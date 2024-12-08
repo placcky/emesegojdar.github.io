@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfólió</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#bemutatkozas">Bemutatkozás</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#galeria">Galéria</a></li>
+                <li><a href="#kontakt">Kapcsolat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bemutatkozas">
+            <h1>Üdvözöllek az oldalamon!</h1>
+            <p>Bemutatkozás szövege. Ide írhatsz magadról egy rövid összefoglalót.</p>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <article>
+                <h3>Blogposzt címe</h3>
+                <p>Blogposzt szövege. Ez egy példaszöveg.</p>
+            </article>
+        </section>
+
+        <section id="galeria">
+            <h2>Galéria</h2>
+            <div class="gallery">
+                <img src="image1.jpg" alt="Kép 1">
+                <img src="image2.jpg" alt="Kép 2">
+                <img src="image3.jpg" alt="Kép 3">
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <h2>Kapcsolat</h2>
+            <form id="contact-form">
+                <label for="name">Név:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Üzenet:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Küldés</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Az én portfólióm</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
