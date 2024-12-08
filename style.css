@@ -8,30 +8,30 @@ body {
 
 /* Fejléc beállítása */
 header {
-    display: flex; /* Flexbox elrendezés a fejlécben */
-    justify-content: space-between; /* A tartalom széthúzása a két oldalra */
-    align-items: center; /* A tartalom középre igazítása vertikálisan */
-    padding: 10px 20px; /* Térköz a fejlécen belül */
-    background-color: #f4f4f4; /* A háttér színe */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
 }
 
 /* A logók konténerének beállítása */
 .logo-container {
-    display: flex; /* A logók egymás mellett legyenek */
-    gap: 20px; /* A két logó közötti távolság */
-    align-items: center; /* Középre igazítja a logókat vertikálisan */
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 /* Logók stílusa */
 .logo img {
-    height: 40px; /* A logók magassága */
-    width: auto; /* A szélesség automatikusan alkalmazkodik */
+    height: 40px;
+    width: auto;
 }
 
 /* A navigációs menü beállítása */
 nav {
-    display: flex; /* A menüpontok sorba rendezése */
-    gap: 20px; /* A menüpontok közötti távolság */
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
@@ -41,56 +41,59 @@ nav a {
 }
 
 nav a:hover {
-    color: #007bff; /* Színváltozás hover esetén */
+    color: #007bff;
 }
 
-/* fő rész */ 
+/* A fő tartalom (main) középre igazítása */
 main {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Középre igazítja az összes szakaszt */
     padding: 20px;
 }
 
-#about {
+/* Az About szakasz középre rendezése */
+#about, #projects, #contact {
     display: flex;
-    align-items: center; /* Kép és szöveg középre igazítása függőlegesen */
-    justify-content: flex-start; /* Balra igazítás a szekción belül */
-    gap: 20px; /* Térköz a kép és a szöveg között */
-    margin: 40px 0; /* Felső és alsó térköz */
+    flex-direction: column;
+    align-items: center; /* Középre igazítja a tartalmat */
+    justify-content: center;
+    text-align: center;
+    margin: 40px 0;
+    width: 100%; /* Az összes szakasz teljes szélességű */
 }
 
-.profile {
-    flex-shrink: 0; /* Ne zsugorodjon össze a kép */
+/* A profilkép és szöveg elrendezése az About szakaszban */
+#about .about-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
 }
 
 .profile img {
-    max-width: 150px; /* A kép maximális szélessége */
-    border-radius: 30px; /* A kép sarkainak lekerekítése */
-    margin-left: 20px; /* Kis térköz a kép bal oldalán */
+    max-width: 150px;
+    border-radius: 30px;
+    margin-left: 20px;
 }
 
 .about-text {
-    max-width: 600px; /* A szöveg tartományának szélessége */
+    max-width: 600px;
 }
 
-.about-text p {
-    font-size: 16px;
-    margin-bottom: 15px; /* Kis térköz a bemutatkozó szöveg alatt */
-}
-
-.about-text h3 {
-    font-size: 20px;
-    margin-top: 0; /* Nincs felső margó a címnek */
-}
-
+/* Education lista stílusa */
 .about-text ul {
-    list-style-type: disc; /* Felsorolás jelölés */
-    padding-left: 20px; /* A lista bal oldali térköze */
+    list-style-type: disc;
+    padding-left: 20px;
 }
 
 .about-text li {
-    margin-bottom: 5px; /* Felsorolás elemei közötti térköz */
+    margin-bottom: 5px;
 }
 
+/* Projektek szakasz */
 .projects {
     display: flex;
     flex-wrap: wrap;
@@ -106,7 +109,7 @@ main {
     width: 300px;
 }
 
-* Kontakt szakasz */
+/* Kontakt szakasz */
 #contact {
     text-align: center;
     margin: 40px 0;
@@ -117,26 +120,25 @@ main {
     margin-bottom: 20px;
 }
 
-/* Elérhetőségek konténerének beállítása */
 .contact-links {
     display: flex;
-    justify-content: center; /* Igazítja az ikonokat középre */
-    gap: 20px; /* A ikonok közötti távolság */
+    justify-content: center;
+    gap: 20px;
 }
 
-/* Az egyes ikonok stílusa */
 .contact-icon img {
-    width: 40px; /* Ikonok mérete */
+    width: 40px;
     height: 40px;
-    transition: transform 0.3s ease-in-out; /* Finom animáció a hover hatásra */
+    transition: transform 0.3s ease-in-out;
 }
 
 .contact-icon img:hover {
-    transform: scale(1.2); /* Hover effektus, amikor nagyobbra nő az ikon */
+    transform: scale(1.2);
 }
 
+/* Footer színátmenet */
 footer {
-    background: linear-gradient(to bottom, white, black); /* Fehérből feketébe irányuló színátmenet */
+    background: linear-gradient(to bottom, white, black);
     color: white;
     text-align: center;
     padding: 10px 0;
