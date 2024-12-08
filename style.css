@@ -53,7 +53,7 @@ main {
 }
 
 /* Az About szakasz középre rendezése */
-#about, #projects, #contact {
+#about, #gallery, #projects, #contact {
     display: flex;
     flex-direction: column;
     align-items: center; /* Középre igazítja a tartalmat */
