@@ -17,14 +17,15 @@ header {
 
 /* A logók konténerének beállítása */
 .logo-container {
-    display: flex;
+    display: flex; /* A logók egymás mellett legyenek */
     gap: 20px; /* A két logó közötti távolság */
+    align-items: center; /* Középre igazítja a logókat vertikálisan */
 }
 
 /* Logók stílusa */
 .logo img {
     height: 40px; /* A logók magassága */
-    width: auto;
+    width: auto; /* A szélesség automatikusan alkalmazkodik */
 }
 
 /* A navigációs menü beállítása */
