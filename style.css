@@ -104,7 +104,7 @@ section {
 }
 
 footer {
-    background-color: #007BFF;
+    background: linear-gradient(to bottom, white, black); /* Fehérből feketébe irányuló színátmenet */
     color: white;
     text-align: center;
     padding: 10px 0;
