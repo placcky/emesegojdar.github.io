@@ -74,12 +74,33 @@ section {
     width: 300px;
 }
 
-form {
+* Kontakt szakasz */
+#contact {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#contact h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Elérhetőségek konténerének beállítása */
+.contact-links {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: 0 auto;
+    justify-content: center; /* Igazítja az ikonokat középre */
+    gap: 20px; /* A ikonok közötti távolság */
+}
+
+/* Az egyes ikonok stílusa */
+.contact-icon img {
+    width: 40px; /* Ikonok mérete */
+    height: 40px;
+    transition: transform 0.3s ease-in-out; /* Finom animáció a hover hatásra */
+}
+
+.contact-icon img:hover {
+    transform: scale(1.2); /* Hover effektus, amikor nagyobbra nő az ikon */
 }
 
 footer {
