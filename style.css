@@ -9,7 +9,7 @@ body {
 header {
     display: flex;
     justify-content: space-between; /* A navigációt balra, a logót jobbra helyezi */
-    align-items: center;
+    align-items: right;
     padding: 10px 20px; /* Térköz a fejlécen belül */
     background-color: #f4f4f4; /* A háttér színe */
 }
