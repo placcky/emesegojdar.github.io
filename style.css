@@ -100,7 +100,7 @@ section {
 }
 
 .contact-icon img:hover {
-    transform: scale(1.2); /* Hover effektus, amikor nagyobbra nő az ikon */
+    transform: scale(0.5); /* Hover effektus, amikor nagyobbra nő az ikon */
 }
 
 footer {
