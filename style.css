@@ -6,22 +6,24 @@ body {
     color: #333;
 }
 
+/* Fejléc beállítása */
 header {
-    display: flex;
-    justify-content: space-between; /* A navigációt balra, a logót jobbra helyezi */
-    align-items: right;
+    display: flex; /* Flexbox elrendezés a fejlécben */
+    justify-content: space-between; /* A tartalom széthúzása a két oldalra */
+    align-items: center; /* A tartalom középre igazítása vertikálisan */
     padding: 10px 20px; /* Térköz a fejlécen belül */
     background-color: #f4f4f4; /* A háttér színe */
 }
 
-header .header-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%; /* A konténer 100%-os szélességű */
+/* A logó stílusa */
+.logo img {
+    height: 40px; /* A logó magassága */
+    width: auto;
 }
 
+/* A navigációs menü beállítása */
 nav {
-    display: flex;
+    display: flex; /* A menüpontok sorba rendezése */
     gap: 20px; /* A menüpontok közötti távolság */
 }
 
@@ -33,11 +35,6 @@ nav a {
 
 nav a:hover {
     color: #007bff; /* Színváltozás hover esetén */
-}
-
-.logo img {
-    height: 40px; /* A logó magassága */
-    width: auto;
 }
 
 main {
