@@ -11,8 +11,20 @@ header {
     display: flex; /* Flexbox elrendezés a fejlécben */
     justify-content: space-between; /* A tartalom széthúzása a két oldalra */
     align-items: center; /* A tartalom középre igazítása vertikálisan */
-    padding: 10px 10px; /* Térköz a fejlécen belül */
+    padding: 10px 20px; /* Térköz a fejlécen belül */
     background-color: #f4f4f4; /* A háttér színe */
+}
+
+/* A logók konténerének beállítása */
+.logo-container {
+    display: flex;
+    gap: 20px; /* A két logó közötti távolság */
+}
+
+/* Logók stílusa */
+.logo img {
+    height: 40px; /* A logók magassága */
+    width: auto;
 }
 
 /* A navigációs menü beállítása */
@@ -29,12 +41,6 @@ nav a {
 
 nav a:hover {
     color: #007bff; /* Színváltozás hover esetén */
-}
-
-/* A logó stílusa */
-.logo img {
-    height: 40px; /* A logó magassága */
-    width: auto;
 }
 
 main {
