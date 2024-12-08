@@ -3,65 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Portfólió</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Portfólió</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .project {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+        footer {
+            background-color: #d279a6; /* Sötétszürke háttér */
+            color: white; /* Fehér szöveg */
+            text-align: center; /* Középre igazítás */
+            padding: 20px 0; /* Függőleges belső térköz */
+            line-height: 1.6; /* Sorok közötti távolság */
+            width: 100%;
+            box-sizing: border-box;
+        }
+        a {
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <h1>Emese Gojdar</h1>
         <nav>
-            <ul>
-                <li><a href="#bemutatkozas">Bemutatkozás</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#galeria">Galéria</a></li>
-                <li><a href="#kontakt">Kapcsolat</a></li>
-            </ul>
+            <a href="#about">About me</a>
+            <a href="#projects">Gallery</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
-
-    <main>
-        <section id="bemutatkozas">
-            <h1>Üdvözöllek az oldalamon!</h1>
-            <p>Bemutatkozás szövege. Ide írhatsz magadról egy rövid összefoglalót.</p>
-        </section>
-
-        <section id="blog">
-            <h2>Blog</h2>
-            <article>
-                <h3>Blogposzt címe</h3>
-                <p>Blogposzt szövege. Ez egy példaszöveg.</p>
-            </article>
-        </section>
-
-        <section id="galeria">
-            <h2>Galéria</h2>
-            <div class="gallery">
-                <img src="image1.jpg" alt="Kép 1">
-                <img src="image2.jpg" alt="Kép 2">
-                <img src="image3.jpg" alt="Kép 3">
+    <section id="about">
+        <h2>About me</h2>
+        <p>Welcome [Itt írhatsz magadról pár mondatot, például a szakmai hátteredről és érdeklődési köreidről.]</p>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Projekt 1</h3>
+                <p>Rövid leírás a projektről.</p>
+                <a href="#">Részletek</a>
             </div>
-        </section>
-
-        <section id="kontakt">
-            <h2>Kapcsolat</h2>
-            <form id="contact-form">
-                <label for="name">Név:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Üzenet:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Küldés</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Az én portfólióm</p>
-    </footer>
-
-    <script src="script.js"></script>
+            <div class="project">
+                <h3>Projekt 2</h3>
+                <p>Rövid leírás a projektről.</p>
+                <a href="#">Részletek</a>
+            </div>
+            <div class="project">
+                <h3>Projekt 3</h3>
+                <p>Rövid leírás a projektről.</p>
+                <a href="#">Részletek</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Keress meg az alábbi elérhetőségek egyikén:</p>
+        <ul>
+            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
+            <li>Social: </li>
+        </ul>
+    </section>
+<footer>
+    &copy; Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
+    Department of Geoinformatics – Z_GIS<br>
+    Schillerstraße 30<br>
+    5020 Salzburg<br>
+    Austria
+</footer>
 </body>
 </html>
