@@ -44,7 +44,9 @@ nav a:hover {
     color: #007bff; /* Színváltozás hover esetén */
 }
 
+/* fő rész */ 
 main {
+    align-items: center;
     padding: 20px;
 }
 
