@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 header {
-    background-color: #007BFF;
+    background-color: #df8df3;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -54,8 +54,8 @@ h1, h2 {
     text-align: center;
 }
 footer {
-    background-color: #d279a6;
-    color: white;
+    background-color: #f5cae0;
+    color: rgb(186, 112, 230);
     text-align: center;
     padding: 20px 0;
     line-height: 1.6;
