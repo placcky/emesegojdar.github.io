@@ -50,20 +50,29 @@ main {
 
 #about {
     display: flex;
-    align-items: center; /* Kép és szöveg középre igazítása */
-    justify-content: flex-start; /* A tartalom balra igazítása */
+    align-items: center; /* Kép és szöveg középre igazítása függőlegesen */
+    justify-content: flex-start; /* Balra igazítás a szekción belül */
     gap: 20px; /* Térköz a kép és a szöveg között */
     margin: 40px 0; /* Felső és alsó térköz */
 }
 
+.profile {
+    flex-shrink: 0; /* Ne zsugorodjon össze a kép */
+}
+
 .profile img {
-    max-width: 150px; /* A kép szélessége */
-    border-radius: 20px; /* A kép sarkainak lekerekítése */
+    max-width: 150px; /* A kép maximális szélessége */
+    border-radius: 10px; /* A kép sarkainak lekerekítése */
     margin-left: 20px; /* Kis térköz a kép bal oldalán */
 }
 
 .about-text {
     max-width: 600px; /* A szöveg tartományának szélessége */
+}
+
+.about-text p {
+    font-size: 16px;
+    margin-bottom: 15px; /* Kis térköz a bemutatkozó szöveg alatt */
 }
 
 .about-text h3 {
@@ -121,7 +130,7 @@ main {
 }
 
 .contact-icon img:hover {
-    transform: scale(1.1); /* Hover effektus, amikor nagyobbra nő az ikon */
+    transform: scale(1.2); /* Hover effektus, amikor nagyobbra nő az ikon */
 }
 
 footer {
