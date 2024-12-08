@@ -3,60 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólió</title>
-    <link rel="stylesheet" href="js/script.js">
+    <title>E-portfólió</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Emese Gojdar</h1>
         <nav>
-            <a href="#about">About me</a>
-            <a href="#projects">Gallery</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">Bemutatkozás</a>
+            <a href="#gallery">Galéria</a>
+            <a href="#contact">Kapcsolat</a>
         </nav>
     </header>
-    <section id="about">
-        <h2>About me</h2>
-        <div class="about-container">
-            <img src="profile.jpg" alt="Profilkép">
-            <p>Welcome [Itt írhatsz magadról pár mondatot, például a szakmai hátteredről és érdeklődési köreidről.]</p>
-        </div>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <h3>Projekt 1</h3>
-                <p style="display: none;">Részletes leírás a projektről.</p>
-                <a href="#">Részletek</a>
+    <main>
+        <section id="about">
+            <h2>Bemutatkozás</h2>
+            <div class="profile">
+                <img src="profile.jpg" alt="Profilkép">
+                <p>Üdvözöllek! [Itt írj magadról egy rövid bemutatkozást.]</p>
             </div>
-            <div class="project">
-                <h3>Projekt 2</h3>
-                <p style="display: none;">Részletes leírás a projektről.</p>
-                <a href="#">Részletek</a>
+        </section>
+        <section id="gallery">
+            <h2>Galéria</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Projekt 1</h3>
+                    <p>Egy érdekes projekt rövid leírása.</p>
+                </div>
+                <div class="project">
+                    <h3>Projekt 2</h3>
+                    <p>Még egy érdekes projekt rövid leírása.</p>
+                </div>
+                <div class="project">
+                    <h3>Projekt 3</h3>
+                    <p>Egy harmadik projekt rövid leírása.</p>
+                </div>
             </div>
-            <div class="project">
-                <h3>Projekt 3</h3>
-                <p style="display: none;">Részletes leírás a projektről.</p>
-                <a href="#">Részletek</a>
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Keress meg az alábbi elérhetőségek egyikén:</p>
-        <ul>
-            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
-            <li>Social: </li>
-        </ul>
-    </section>
+        </section>
+        <section id="contact">
+            <h2>Kapcsolat</h2>
+            <form id="contactForm">
+                <label for="name">Név:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Üzenet:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Küldés</button>
+            </form>
+        </section>
+    </main>
     <footer>
-        &copy; Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
+        &copy;  Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
         Department of Geoinformatics – Z_GIS<br>
         Schillerstraße 30<br>
         5020 Salzburg<br>
         Austria
     </footer>
-    <script src="css/style.css"></script>
+    <script src="script.js"></script>
 </body>
 </html>
