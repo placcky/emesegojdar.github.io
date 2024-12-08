@@ -7,20 +7,31 @@ body {
 }
 
 header {
-    background-color: #007BFF;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* A navigációt balra, a logót jobbra helyezi */
+    align-items: center;
+    padding: 10px 20px; /* Térköz a fejlécen belül */
+    background-color: #f4f4f4; /* A háttér színe */
+}
+
+nav {
+    display: flex;
+    gap: 20px; /* A menüpontok közötti távolság */
 }
 
 nav a {
-    margin: 0 15px;
-    color: white;
     text-decoration: none;
+    color: #333;
+    font-size: 16px;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #007bff; /* Színváltozás hover esetén */
+}
+
+.logo img {
+    height: 40px; /* A logó magassága */
+    width: auto;
 }
 
 main {
