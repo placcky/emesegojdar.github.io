@@ -64,7 +64,7 @@ main {
 
 .profile img {
     max-width: 150px; /* A kép maximális szélessége */
-    border-radius: 10px; /* A kép sarkainak lekerekítése */
+    border-radius: 30px; /* A kép sarkainak lekerekítése */
     margin-left: 20px; /* Kis térköz a kép bal oldalán */
 }
 
