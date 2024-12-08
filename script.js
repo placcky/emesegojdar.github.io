@@ -8,12 +8,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
-    // Form submission
-    const form = document.getElementById("contactForm");
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Köszönjük az üzenetet, hamarosan jelentkezünk!");
-        form.reset();
-    });
 });
