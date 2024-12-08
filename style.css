@@ -68,19 +68,15 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
     align-items: center;
-    width: 100%;
+    gap: 20px;
+    width: 80%; /* Kisebb szélesség, hogy középre igazodjon */
 }
 
 .profile img {
     max-width: 150px;
     border-radius: 30px;
     margin-left: 20px;
-}
-
-.about-text {
-    max-width: 600px;
 }
 
 /* Education lista stílusa */
@@ -99,6 +95,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    width: 100%; /* Az egész szélesség */
 }
 
 .project {
