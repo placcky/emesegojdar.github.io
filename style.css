@@ -34,7 +34,6 @@ header::before {
     z-index: -1; /* Háttérbe helyezés */
 }
 
-
 /* A logók konténerének beállítása */
 .logo-container {
     display: flex;
