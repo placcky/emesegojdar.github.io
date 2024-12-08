@@ -100,7 +100,7 @@ main {
 }
 
 /* Education lista stílusa */
-.about-text ul {;
+.about-text ul {
     list-style-type: disc;
     padding-left: 20px;
 }
@@ -163,7 +163,7 @@ main {
 /* Footer stílus */
 footer {
     font-family: 'Gill Sans MT', sans-serif;
-    background-color: ##FFFAF0f3; /* Egyszínű footer */
+    background-color: #FFFAF0f3; /* Egyszínű footer */
     color: rgb(87, 87, 87);
     text-align: center;
     padding: 10px 0;
