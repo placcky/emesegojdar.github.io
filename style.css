@@ -14,6 +14,12 @@ header {
     background-color: #f4f4f4; /* A háttér színe */
 }
 
+header .header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* A konténer 100%-os szélességű */
+}
+
 nav {
     display: flex;
     gap: 20px; /* A menüpontok közötti távolság */
