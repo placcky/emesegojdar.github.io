@@ -8,7 +8,7 @@ body {
     padding: 0;
     background-color: #FFFAF0f3;
     color: #2E1300;
-    background-image: url('compass2.png'); /* Új háttérkép */
+    background-image: url('assets/compass2.png'); /* Új háttérkép */
     background-position: calc(100% + 100px) center; /* A háttér középre igazítása */
     background-repeat: no-repeat; /* A háttér ne ismétlődjön */
     background-size: 900px; /* A háttér kitöltse az egész képernyőt */
