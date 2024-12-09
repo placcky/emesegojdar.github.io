@@ -8,7 +8,14 @@ body {
     padding: 0;
     background-color: #FFFAF0f3;
     color: #2E1300;
+    background-image: url('compass2.png'); /* Új háttérkép */
+    background-position: calc(100% + 100px) center; /* A háttér középre igazítása */
+    background-repeat: no-repeat; /* A háttér ne ismétlődjön */
+    background-size: 900px; /* A háttér kitöltse az egész képernyőt */
+    background-attachment: fixed; /* A háttér rögzítése, ha görgetjük az oldalt */
+    z-index: 999;
 }
+
 
 header {
     font-family: 'Gill Sans MT';
@@ -195,7 +202,7 @@ main {
 /* Footer árnyék (színátmenetes sáv) */
 .footer-shadow {
     height: 15px; /* A sáv magassága */
-    background: linear-gradient(to bottom, transparent, #83502C); /* Színátmenet árnyékhatáshoz */
+    background: linear-gradient(to bottom, transparent, #996c4d); /* Színátmenet árnyékhatáshoz */
 }
 
 /* Footer stílus */
