@@ -10,14 +10,17 @@ body {
     color: #2E1300;
 }
 
-/* Fejléc beállítása */
 header {
     font-family: 'Gill Sans MT';
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    position: relative; /* Relatív pozíció szükséges a pszeudo-elemhez */
+    position: fixed; /* A fejléc rögzítése az ablak tetejére */
+    top: 0; /* Az ablak tetején helyezkedjen el */
+    left: 0; /* Az ablak bal oldalán helyezkedjen el */
+    right: 0; /* Az ablak jobb oldalán helyezkedjen el */
+    z-index: 1000; /* Magas z-index az előtérbe helyezéshez */
 }
 
 header::before {
@@ -27,7 +30,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(46, 19, 0, 0.20); /* Átlátszó háttérszín */
+    background-color: rgba(46, 19, 0, 0.20); /* Átlátszó háttérszín */
     z-index: -1; /* Háttérbe helyezés */
 }
 
