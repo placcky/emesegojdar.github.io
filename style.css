@@ -140,7 +140,7 @@ main {
     margin-right: auto; /* Középre igazítás automatikus margókkal */
 }
 
-.experience h3, .education h3 {
+.experience h3, .volunteer h3, .education h3 {
     font-size: 24px;
     color: #2E1300;
     margin-bottom: 20px;
