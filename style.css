@@ -132,7 +132,7 @@ main {
 .about-text li {
     margin-bottom: 5px;
 }
-.experience, .education {
+.experience, .volunteer, .education {
     margin-top: 20px;
     text-align: left; /* Balra zárt szöveg */
     width: 45%; /* A szövegtörzs szélessége, középre igazításhoz */
