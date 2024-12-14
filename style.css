@@ -82,7 +82,7 @@ main {
 }
 
 /* Az About szakasz középre rendezése */
-#about, #gallery, #projects, #contact {
+#about, #gallery, #blog, #contact {
     font-family: 'Raleway';
     display: flex;
     flex-direction: column;
@@ -132,7 +132,7 @@ main {
 .about-text li {
     margin-bottom: 5px;
 }
-.experience, .volunteer, .education {
+.experience, .volunteer, .education, .blog {
     margin-top: 20px;
     text-align: left; /* Balra zárt szöveg */
     width: 45%; /* A szövegtörzs szélessége, középre igazításhoz */
@@ -153,21 +153,100 @@ main {
     margin: 10px 0; /* Függőleges margó minden bekezdés között */
 }
 
-/* Projektek szakasz */
-.projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%; /* Az egész szélesség */
+/* Galéria kollázs */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatikusan változó oszlopok */
+    gap: 10px; /* Képek közötti távolság */
+    margin-bottom: 20px;
+    grid-auto-rows: minmax(100px, auto); /* A sorok automatikusan alkalmazkodnak a tartalomhoz */
 }
 
-.project {
-    background: #FFFAF0f3;
-    border: 1px solid #ddd;
+.collage img {
+    width: 100%; /* A képek szélessége a konténerhez igazodik */
+    max-height: 500px; /* A képek maximális magassága */
+    object-fit: contain; /* A képek megtartják az eredeti méretarányt */
     border-radius: 5px;
-    padding: 15px;
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Finom árnyék a képeken */
+}
+
+/* Blog szekció */
+#blog {
+    font-family: 'Raleway';
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Középre igazítás eltávolítása */
+    justify-content: flex-start; /* Középre igazítás eltávolítása */
+    text-align: left; /* Balra igazítás biztosítása */
+    margin: 40px 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 45%; /* Az összes szakasz teljes szélességű */
+}
+
+/* A blog cím balra igazítása */
+#blog h2 {
+    text-align: left; /* A blog cím balra igazítása */
+    color: #2E1300; /* Szöveg színe */
+    margin-bottom: 10px; /* Távolság a cím és a bejegyzések között */
+}
+
+
+/* A bejegyzések szakasza */
+.blog-posts {
+    font-family: 'Raleway';
+    display: flex;
+    flex-direction: column;
+    text-align: flex; /* Balra igazított szöveg */
+    margin: 40px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 45%; /* Teljes szélesség */
+    gap: 0;
+}
+
+/* Egyes blog bejegyzések */
+.blog-post {
+    background: rgba(0, 0, 0, 0); /* Átlátszó háttér */
+    border: none; /* Nincs keret */
+    padding: 20px;
+    box-shadow: none; /* Nincs árnyék */
+    border-radius: 5px;
+    margin-left: 0; /* Balra igazítva */
+    margin-right: 0; /* Balra igazítva */
+}
+
+/* A blog bejegyzés címek balra igazítása */
+.blog-post h3 {
+    margin-top: 0;
+    color: #2E1300; /* A szöveg színe */
+    text-align: left; /* Balra igazított címek */
+}
+
+/* A blog bejegyzés részleteinek balra igazítása */
+.blog-post p {
+    text-align: left; /* Balra igazított bejegyzés részletek */
+    color: #2E1300; /* A szöveg színe */
+    font-size: 16px; /* Betűméret */
+    line-height: 1.6; /* Jobb olvashatóság */
+}
+
+/* A "More..." link stílusa */
+.more-link {
+    display: inline-block;
+    text-align: center;
+    background-color: #2E1300;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.more-link:hover {
+    transform: scale(1.1);
+    background-color: #83502C;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* Kontakt szakasz */
@@ -212,4 +291,15 @@ footer {
     color: rgb(87, 87, 87);
     text-align: center;
     padding: 10px 0;
+}
+
+/* Reszponzív elrendezés mobilra */
+@media (max-width: 768px) {
+    .collage {
+        grid-template-columns: 1fr; /* Egy oszlopos elrendezés */
+    }
+
+    .blog-posts {
+        grid-template-columns: 1fr; /* Egy oszlopos elrendezés */
+    }
 }
