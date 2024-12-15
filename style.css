@@ -3,7 +3,7 @@
     src: url(fonts/Raleway-VariableFont_wght.ttf);
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     margin: 0;
     padding: 0;
     background-color: #FFFAF0f3;
@@ -397,7 +397,7 @@ main {
 
 /* Footer stílus */
 .footer {
-    font-family: 'Gill Sans MT', sans-serif;
+    font-family: 'Gill Sans MT';
     background-color: #FFFAF0f3; /* Egyszínű footer */
     color: rgb(87, 87, 87);
     text-align: center;
