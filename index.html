@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emese Gojdar's ePortfolio</title>
+    <link rel="icon" href="assets/compass_AI.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
+            <div class="logo">
+                <img src="assets/eplus.jpg" alt="Logo 2"> <!-- Második logó -->
+            </div>
             <div class="logo">
                 <img src="assets/plus.jpg" alt="Logo 1"> <!-- Első logó -->
             </div>
@@ -26,8 +30,10 @@
     </header>    
     <main>
         <section id="about">
-            <h2>Emese Gojdar</h2>
+            <h4 >Emese Gojdar</h4>
             <div class="about-content">
+
+               
                 <p>Welcome to my page! I am a geographer with a BSc degree, currently pursuing a double master’s degree in the Copernicus Master in Digital Earth program, a joint initiative between the University of Salzburg and Palacký University Olomouc. My interests lie in environmental protection, sustainability, and climate change, combined with my passion for arts, digital visualization, and illustration. I strive to merge scientific knowledge with creative expression to contribute to a more sustainable and visually informed future.</p>
                 <div class="profile">
                     <img src="assets/image1" alt="Profilkép">
@@ -65,23 +71,30 @@
             <section id="gallery">
                 <h2>Gallery</h2>
                 <div class="collage">
-                    <img src="assets/ArcticIceDecline_EG24.png" alt="Image 1">
-                    <img src="assets/image2.jpg" alt="Image 2">
-                    <img src="assets/1706089662487.jpg" alt="Image 3">
-                    <img src="assets/image4.jpg" alt="Image 4">
+                    <img src="assets/1706089662487.jpg" alt="Image 3" class="gallery-image">
+                    <img src="assets/ArcticIceDecline_EG24.png" alt="Image 1" class="gallery-image">
+                    <img src="assets/Layout.jpg" alt="Image 2" class="gallery-image">  
                 </div>
                 <a href="gallery.html" class="more-link">More...</a>
+            </section>
+            
+            <!-- Lightbox struktúra a képek kinagyításához -->
+            <div id="lightbox" class="hidden">
+                <span id="close">&times;</span>
+                <img id="lightbox-img" src="" alt="Full-size image">
+            </div>
+            
             <section id="blog">
                 <h2>Blog</h2>
                 <div class="blog-posts">
                     <div class="blog-post">
-                        <h3>Big Data from Space 2023 - ESA Conference Vienna</h3>
-                        <p>A short excerpt from my first blog post...</p>
+                        <h3>Big Data from Space 2023: BiDS Vienna</h3>
+                        <p>Last year, in November 2023, I followed one of my favorite "passion" and traveled to Vienna for the ESA Big Data from Space conference.</p>
                         <a href="blog-post1.html" class="more-link">More...</a>
                      </div>
                     <div class="blog-post">
                         <h3>Sinergise Summer School 2023 - Ljubljana</h3>
-                        <p>A short excerpt from my second blog post...</p>
+                        <p>In the summer of 2023, I had the opportunity to participate in the Summer School organized by Sinergise...</p>
                         <a href="blog-post2.html" class="more-link">More...</a>
                     </div>
                 </div>
@@ -103,12 +116,14 @@
     </main>
     <div class="footer-shadow"></div>
     <footer>
+        <div class="footer">
         &copy;  Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
         Department of Geoinformatics – Z_GIS<br>
         Schillerstraße 30<br>
         5020 Salzburg<br>
         Austria
     </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

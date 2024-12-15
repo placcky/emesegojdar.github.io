@@ -46,3 +46,31 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error("Error loading gallery data:", error));
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.getElementById("close");
+
+    
+    // Galéria képek kattintási eseménye
+    document.querySelectorAll(".gallery-image").forEach(image => {
+        image.addEventListener("click", () => {
+            lightboxImg.src = image.src; // A lightbox kép forrását beállítjuk
+            lightbox.classList.add("visible"); // Lightbox megjelenítése
+        });
+    });
+
+    // Bezáró gomb esemény
+    closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("visible"); // Lightbox elrejtése
+    });
+
+    // Lightbox bezárása, ha a háttérre kattintunk
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove("visible");
+        }
+    });
+});
+
+

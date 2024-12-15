@@ -3,7 +3,7 @@
     src: url(fonts/Raleway-VariableFont_wght.ttf);
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway';
     margin: 0;
     padding: 0;
     background-color: #FFFAF0f3;
@@ -14,11 +14,13 @@ body {
     background-size: 900px; /* A háttér kitöltse az egész képernyőt */
     background-attachment: fixed; /* A háttér rögzítése, ha görgetjük az oldalt */
     z-index: 999;
+    height: 100vh; /* Beállítjuk, hogy az oldal magassága 100% legyen */
 }
 
 
 header {
-    font-family: 'Gill Sans MT';
+    font-family: 'Raleway';
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,6 +97,8 @@ main {
     width: 100%; /* Az összes szakasz teljes szélességű */
 }
 
+
+
 /* A profilkép és szöveg elrendezése az About szakaszban */
 #about .about-content {
     display: flex;
@@ -102,9 +106,9 @@ main {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 70%; /* Kisebb szélesség, hogy középre igazodjon */
-    margin: 0 auto; /* Középre igazítás */
-    margin-bottom: 40px;
+    width: 45%; /* A szövegtörzs szélessége, középre igazításhoz */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* A szövegre vonatkozó stílus */
@@ -156,18 +160,128 @@ main {
 /* Galéria kollázs */
 .collage {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatikusan változó oszlopok */
-    gap: 10px; /* Képek közötti távolság */
+    grid-template-columns: repeat(3, 1fr); /* 2 kép egy sorban, ha elfér */
+    gap: 30px; /* Képek közötti távolság */
     margin-bottom: 20px;
-    grid-auto-rows: minmax(100px, auto); /* A sorok automatikusan alkalmazkodnak a tartalomhoz */
+}
+/*************************************************************************************************/
+/* Galéria képek stílusa */
+.collage img {
+    width: 250px; /* A képek szélessége a konténerhez igazodik */
+    height: auto; /* Az arányok megtartása érdekében */
+    object-fit: cover; /* A képek tartalma kitölti a rendelkezésre álló teret */
+    border-radius: 5px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a képek alatt */
+    cursor: pointer; /* Mutatja, hogy kattintható */
+    transition: transform 0.3s ease; /* Animáció az egér felette mozgatásakor */
 }
 
-.collage img {
-    width: 100%; /* A képek szélessége a konténerhez igazodik */
-    max-height: 500px; /* A képek maximális magassága */
-    object-fit: contain; /* A képek megtartják az eredeti méretarányt */
+.collage img:hover {
+    transform: scale(1.05); /* A képek nagyítása hover állapotban */
+}
+#image-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Három oszlop */
+    gap: 10px; /* Képek közötti távolság */
+    margin-top: 20px;
+}
+
+#image-container img {
+    width: 100%; /* A képek szélessége kitölti a konténert */
+    height: auto; /* Magasság arányos lesz a szélességgel */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék a képek alatt */
+    transition: transform 0.3s ease-in-out; /* Animáció a képeknek */
+}
+
+#image-container img:hover {
+    transform: scale(1.05); /* Kép nagyítása hover hatásra */
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #2E1300;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #FFFAF0;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Finom árnyék a képeken */
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #83502C;
+    color: #fff;
+}
+
+/* Lightbox overlay */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Bezáró gomb stílusa */
+#close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Bezáró gomb a lightbox-hoz */
+#close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* "More..." link stílusa */
+.more-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.more-link:hover {
+    color: white;
+}
+
+#about h4 {
+    font-size: 36px; /* Állítsd a kívánt betűméretet */
+    font-weight: bold; /* Ha szeretnéd vastagon szedni */
+    text-align: center; /* Igazítsd középre, ha szükséges */
+    margin-top: 20px; /* Extra távolság felfelé, ha kell */
 }
 
 /* Blog szekció */
@@ -177,18 +291,23 @@ main {
     flex-direction: column;
     align-items: flex-start; /* Középre igazítás eltávolítása */
     justify-content: flex-start; /* Középre igazítás eltávolítása */
-    text-align: left; /* Balra igazítás biztosítása */
-    margin: 40px 0;
+    text-align: justify; /* Balra igazítás biztosítása */
+    margin: 100px 0;
     margin-top: 30px;
     margin-bottom: 10px;
     width: 45%; /* Az összes szakasz teljes szélességű */
+    line-height: 1.8;
 }
 
 /* A blog cím balra igazítása */
 #blog h2 {
-    text-align: left; /* A blog cím balra igazítása */
+    text-align: left; /* Balra igazított cím */
     color: #2E1300; /* Szöveg színe */
     margin-bottom: 10px; /* Távolság a cím és a bejegyzések között */
+    width: 100%; /* Teljes szélesség */
+    white-space: nowrap; /* Nem törik meg a szöveg */
+    overflow: hidden; /* A túlcsorduló szöveget elrejti */
+    text-overflow: ellipsis; /* Három ponttal jelzi a túl hosszú szöveget */
 }
 
 
@@ -198,10 +317,10 @@ main {
     display: flex;
     flex-direction: column;
     text-align: flex; /* Balra igazított szöveg */
-    margin: 40px 0;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 45%; /* Teljes szélesség */
+    margin: 100px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%; /* Teljes szélesség */
     gap: 0;
 }
 
@@ -209,19 +328,12 @@ main {
 .blog-post {
     background: rgba(0, 0, 0, 0); /* Átlátszó háttér */
     border: none; /* Nincs keret */
-    padding: 20px;
     box-shadow: none; /* Nincs árnyék */
-    border-radius: 5px;
+    border-radius: 0px;
     margin-left: 0; /* Balra igazítva */
     margin-right: 0; /* Balra igazítva */
 }
 
-/* A blog bejegyzés címek balra igazítása */
-.blog-post h3 {
-    margin-top: 0;
-    color: #2E1300; /* A szöveg színe */
-    text-align: left; /* Balra igazított címek */
-}
 
 /* A blog bejegyzés részleteinek balra igazítása */
 .blog-post p {
@@ -285,12 +397,13 @@ main {
 }
 
 /* Footer stílus */
-footer {
+.footer {
     font-family: 'Gill Sans MT', sans-serif;
     background-color: #FFFAF0f3; /* Egyszínű footer */
     color: rgb(87, 87, 87);
     text-align: center;
     padding: 10px 0;
+    position: bottom;
 }
 
 /* Reszponzív elrendezés mobilra */
@@ -302,4 +415,96 @@ footer {
     .blog-posts {
         grid-template-columns: 1fr; /* Egy oszlopos elrendezés */
     }
+}
+
+.blog2img {
+    display: flex;
+    flex-direction: column; /* Egymás alatti elrendezés */
+    gap: 20px; /* Távolság a képek között */
+    margin-top: 10px;
+    margin-bottom: 40px;
+    align-items: center; /* Középre igazítás */
+}
+
+.blog2img img {
+    width: 100%;
+    max-width: 600px; /* Maximum szélesség egy képre */
+    height: auto; /* Arányok megtartása */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opciós árnyék */
+}
+
+.blog1img {
+    display: grid; /* Rácsos elrendezés */
+    grid-template-columns: repeat(2, 1fr); /* 2 oszlop, egyenlő szélességgel */
+    gap: 20px; /* Távolság a képek között */
+    align-items: center; /* Vertikális középre igazítás */
+    justify-items: center; /* Horizontális középre igazítás */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%; /* A szülőelem szélessége */
+}
+
+.blog1img img {
+    max-width: 100%; /* Kép teljes szélessége a cellán belül */
+    max-height: 450px; /* Maximum magasság */
+    height: auto; /* Arányos méretezés */
+    object-fit: cover; /* Kép kitöltése az arányok megtartásával */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Árnyék */
+    margin: 0 auto; /* Extra biztonság a középre igazításhoz */
+    display: block; /* A képek blokkszintű elemként viselkednek */
+}
+
+
+
+
+.lightbox2 {
+    display: none; /* Alapértelmezésben rejtett */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox2.visible {
+    display: flex; /* Láthatóvá válik */
+}
+
+.lightbox2 img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background: lightgray;
+}
+
+/* linkeknek ne legyen színe*/
+a {
+    font-family:'Raleway';
+    color: #2E1300; /* Egyedi szín a linkekhez */
+    text-decoration: line; /* Nincs aláhúzás */
+    
+}
+a:hover {
+    color: #83502C; /* Hover állapot színe */
+    transition: color; /* Animáció */
+    
 }
