@@ -497,7 +497,7 @@ main {
 
 /* linkeknek ne legyen színe*/
 a {
-    font-family:'Gill Sans MT';
+    font-family:'Raleway';
     color: #2E1300; /* Egyedi szín a linkekhez */
     text-decoration: line; /* Nincs aláhúzás */
     
