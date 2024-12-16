@@ -3,7 +3,7 @@
     src: url(fonts/Raleway-VariableFont_wght.ttf);
 }
 body {
-    font-family: 'Raleway';
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #FFFAF0f3;
@@ -19,7 +19,7 @@ body {
 
 
 header {
-    font-family: 'Raleway';
+    font-family: 'Gill Sans MT';
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,8 +90,6 @@ main {
     align-items: center; /* Középre igazítja a tartalmat */
     justify-content: center;
     text-align: left;
-    margin: 40px 0;
-    margin-top: 100px;
     margin-bottom: 30px;
     width: 100%; /* Az összes szakasz teljes szélességű */
 }
@@ -102,10 +100,10 @@ main {
 #about .about-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
-    width: 45%; /* A szövegtörzs szélessége, középre igazításhoz */
+    width: 50%; /* A szövegtörzs szélessége, középre igazításhoz */
     margin-left: auto;
     margin-right: auto;
 }
@@ -115,7 +113,7 @@ main {
     max-width: 600px; /* A szöveg maximális szélessége */
     line-height: 1.8; /* Sortávolság javítása */
     text-align: justify; /* Balra igazítás */
-    margin: 0; /* Nincs margó a szöveg körül */
+    margin: 20px 0; /* Nincs margó a szöveg körül */
 }
 
 /* Profilkép stílus */
@@ -138,9 +136,9 @@ main {
 .experience, .volunteer, .education, .blog {
     margin-top: 20px;
     text-align: left; /* Balra zárt szöveg */
-    width: 45%; /* A szövegtörzs szélessége, középre igazításhoz */
+    width: 50%; /* A szövegtörzs szélessége, középre igazításhoz */
     margin-left: auto;
-    margin-right: auto; /* Középre igazítás automatikus margókkal */
+    margin-right: auto;
 }
 
 .experience h3, .volunteer h3, .education h3 {
@@ -154,6 +152,19 @@ main {
     font-size: 16px;
     line-height: 1.8; /* Jobb olvashatóság érdekében */
     margin: 10px 0; /* Függőleges margó minden bekezdés között */
+}
+
+@media (max-width: 1100px) {
+    #about .about-content, 
+    .experience, 
+    .education, 
+    .volunteer,
+    #blog {
+        width: 90% !important;
+        /*width: auto;  Automatikusan alkalmazkodik */
+         /*flex-direction: column; Opcionális: tartalom oszlopos elrendezése */
+        /*text-align: center;  Középre igazított szöveg */
+    }
 }
 
 /* Galéria kollázs */
@@ -277,7 +288,7 @@ main {
 }
 
 #about h4 {
-    font-size: 36px; /* Állítsd a kívánt betűméretet */
+    font-size: 3vw; /* Állítsd a kívánt betűméretet */
     font-weight: bold; /* Ha szeretnéd vastagon szedni */
     text-align: center; /* Igazítsd középre, ha szükséges */
     margin-top: 20px; /* Extra távolság felfelé, ha kell */
@@ -294,7 +305,7 @@ main {
     margin: 100px 0;
     margin-top: 30px;
     margin-bottom: 10px;
-    width: 45%; /* Az összes szakasz teljes szélességű */
+    width: 50%; /* Az összes szakasz teljes szélességű */
     line-height: 1.8;
 }
 
@@ -397,7 +408,7 @@ main {
 
 /* Footer stílus */
 .footer {
-    font-family: 'Raleway';
+    font-family: 'Gill Sans MT', sans-serif;
     background-color: #FFFAF0f3; /* Egyszínű footer */
     color: rgb(87, 87, 87);
     text-align: center;
@@ -453,9 +464,6 @@ main {
     display: block; /* A képek blokkszintű elemként viselkednek */
 }
 
-
-
-
 .lightbox2 {
     display: none; /* Alapértelmezésben rejtett */
     position: fixed;
@@ -497,7 +505,7 @@ main {
 
 /* linkeknek ne legyen színe*/
 a {
-    font-family:'Raleway';
+    font-family:'Gill Sans MT';
     color: #2E1300; /* Egyedi szín a linkekhez */
     text-decoration: line; /* Nincs aláhúzás */
     
