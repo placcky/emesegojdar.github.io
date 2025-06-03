@@ -1,16 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Smooth scrolling
-    document.querySelectorAll("nav a").forEach(anchor => {
+    // Smooth scrolling csak belső linkekre
+    document.querySelectorAll("nav a[href^='#']").forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             const href = this.getAttribute("href");
-            if (href && href.startsWith("#")) {
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
                 e.preventDefault();
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: "smooth"
-                    });
-                }
+                targetElement.scrollIntoView({
+                    behavior: "smooth"
+                });
             }
         });
     });
