@@ -1,18 +1,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Travel Maps - Free Version</title>
+    <title>Custom Travel Maps - Under Development</title>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <!-- Saját CSS -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Add this line with your other script imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="header">
         <h1>🗺️ Custom Travel Maps</h1>
-        <p>Create beautiful travel maps with your photos</p>
+        <p>Create beautiful travel maps with your photos - UNDER DEVELOPMENT</p>
         <span class="free-badge">✨ 100% Free • No Registration Required</span>
     </div>
     
@@ -124,9 +127,11 @@
     <script>
         // Initialize map with custom style
         const map = L.map('map').setView([47.8095, 13.0550], 8);
+        let generatedMapData = null;
         let currentTileLayer;
         let uploadedPhotos = [];
         let photoMarkers = [];
+        
         
         // Custom basemap configurations
         const basemaps = {
@@ -344,51 +349,239 @@
         }
         
         function generateMap() {
-            if (uploadedPhotos.length === 0) {
-                showStatus('Please upload at least one photo', 'error');
-                return;
-            }
-            
-            const btn = document.getElementById('generateBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const originalText = btn.textContent;
-            
-            btn.textContent = '⏳ Generating map...';
-            btn.disabled = true;
-            
-            // Simulate map generation
-            setTimeout(() => {
-                btn.textContent = '✅ Map generated!';
-                downloadBtn.disabled = false;
-                showStatus(`Custom map generated with ${uploadedPhotos.length} photos!`, 'success');
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                }, 2000);
-            }, 2000);
-        }
+    if (uploadedPhotos.length === 0) {
+        showStatus('Please upload at least one photo', 'error');
+        return;
+    }
+    
+    const btn = document.getElementById('generateBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const originalText = btn.textContent;
+    
+    btn.textContent = '⏳ Generating map...';
+    btn.disabled = true;
+    
+    // Capture current map state
+    setTimeout(() => {
+        // Get current map style
+        const activeStyle = document.querySelector('.basemap-option.active').dataset.style;
         
-        function downloadMap() {
-            // In a real implementation, this would generate and download a PDF
-            showStatus('PDF generation would be implemented with jsPDF library', 'success');
-            
-            // Simulate download
-            const link = document.createElement('a');
-            link.href = '#';
-            link.download = `travel-map-${new Date().getTime()}.pdf`;
-            link.textContent = 'Download';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            
-            setTimeout(() => {
-                document.body.removeChild(link);
-                showStatus('In real version: PDF would download automatically', 'success');
-            }, 100);
-        }
+        // Create map image (simplified - in production you'd use html2canvas or similar)
+        const mapContainer = document.getElementById('map');
         
+        // Store generated map data
+        generatedMapData = {
+            style: activeStyle,
+            photos: uploadedPhotos.map(photo => ({
+                ...photo,
+                thumbnail: photo.src // Use the same image as thumbnail for now
+            })),
+            mapImage: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==' // Placeholder
+        };
+
+        generatedMapData = {
+            style: activeStyle,
+            photos: uploadedPhotos.map(photo => ({
+                ...photo,
+                thumbnail: photo.src
+            })),
+            mapImage: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='
+        };
+        window.generatedMapData = generatedMapData;
+        
+        btn.textContent = '✅ Map generated!';
+        downloadBtn.disabled = false;
+        showStatus(`Custom map generated with ${uploadedPhotos.length} photos!`, 'success');
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }, 2000);
+    }, 2000);
+}
         // Initialize
         updatePhotoCounter();
+
+         async function downloadMap() {
+    if (!window.generatedMapData && !generatedMapData) {
+        showStatus('Please generate the map first', 'error');
+        return;
+    }
+    
+    const downloadBtn = document.getElementById('downloadBtn');
+    const originalText = downloadBtn.textContent;
+    
+    downloadBtn.textContent = '⏳ Creating PDF...';
+    downloadBtn.disabled = true;
+    
+    try {
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: 'a4'
+        });
+        
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        
+        // Add title
+        pdf.setFontSize(24);
+        pdf.setTextColor(51, 55, 72); // #2d3748
+        pdf.text('My Travel Map', pageWidth / 2, 20, { align: 'center' });
+        
+        // Add map style info
+        pdf.setFontSize(12);
+        pdf.setTextColor(102, 126, 234); // #667eea
+        const styleNames = {
+            vintage: 'Vintage Explorer',
+            adventure: 'Adventure Trail',
+            minimalist: 'Clean & Simple',
+            artistic: 'Artistic Blend'
+        };
+        pdf.text(`Map Style: ${styleNames[generatedMapData.style]}`, pageWidth / 2, 30, { align: 'center' });
+        
+        // Add generated date
+        pdf.setFontSize(10);
+        pdf.setTextColor(128, 128, 128);
+        pdf.text(`Generated: ${new Date().toLocaleDateString()}`, pageWidth / 2, 36, { align: 'center' });
+        
+        // Add main map
+        const mapWidth = pageWidth * 0.6;
+        const mapHeight = pageHeight * 0.6;
+        const mapX = 20;
+        const mapY = 45;
+        
+        pdf.addImage(generatedMapData.mapImage, 'PNG', mapX, mapY, mapWidth, mapHeight);
+        
+        // Add photos sidebar
+        const sidebarX = mapX + mapWidth + 10;
+        const sidebarWidth = pageWidth - sidebarX - 10;
+        
+        pdf.setFontSize(14);
+        pdf.setTextColor(51, 55, 72);
+        pdf.text('Photos', sidebarX, mapY + 10);
+        
+        // Add photo thumbnails and info
+        let currentY = mapY + 20;
+        const photoSize = 25;
+        const photoSpacing = 30;
+        
+        for (let i = 0; i < Math.min(generatedMapData.photos.length, 8); i++) {
+            const photo = generatedMapData.photos[i];
+            
+            try {
+                // Add photo thumbnail
+                pdf.addImage(photo.thumbnail, 'JPEG', sidebarX, currentY, photoSize, photoSize);
+                
+                // Add photo info
+                pdf.setFontSize(9);
+                pdf.setTextColor(51, 55, 72);
+                const photoName = photo.name.length > 20 ? photo.name.substring(0, 17) + '...' : photo.name;
+                pdf.text(photoName, sidebarX + photoSize + 5, currentY + 8);
+                
+                pdf.setFontSize(8);
+                pdf.setTextColor(128, 128, 128);
+                pdf.text(`Lat: ${photo.lat.toFixed(4)}`, sidebarX + photoSize + 5, currentY + 14);
+                pdf.text(`Lng: ${photo.lon.toFixed(4)}`, sidebarX + photoSize + 5, currentY + 18);
+                
+                if (photo.date !== 'Unknown') {
+                    const shortDate = photo.date.split(' ')[0]; // Get date part only
+                    pdf.text(shortDate, sidebarX + photoSize + 5, currentY + 22);
+                }
+                
+                currentY += photoSpacing;
+            } catch (photoError) {
+                console.warn('Error adding photo to PDF:', photoError);
+                // Continue with next photo
+                currentY += photoSpacing;
+            }
+        }
+        
+        // Add statistics
+        const statsY = mapY + mapHeight - 30;
+        pdf.setFontSize(12);
+        pdf.setTextColor(51, 55, 72);
+        pdf.text('Trip Statistics', mapX, statsY);
+        
+        pdf.setFontSize(10);
+        pdf.setTextColor(102, 126, 234);
+        pdf.text(`📍 ${generatedMapData.photos.length} locations visited`, mapX, statsY + 8);
+        
+        // Calculate date range
+        const dates = generatedMapData.photos
+            .map(p => p.date)
+            .filter(d => d !== 'Unknown')
+            .sort();
+        
+        if (dates.length > 0) {
+            const firstDate = dates[0].split(' ')[0];
+            const lastDate = dates[dates.length - 1].split(' ')[0];
+            pdf.text(`📅 ${firstDate} - ${lastDate}`, mapX, statsY + 16);
+        }
+        
+        // Add footer
+        pdf.setFontSize(8);
+        pdf.setTextColor(128, 128, 128);
+        pdf.text('Generated by Custom Travel Maps - 100% Free', pageWidth / 2, pageHeight - 10, { align: 'center' });
+        
+        // Save the PDF
+        const fileName = `travel-map-${new Date().toISOString().split('T')[0]}.pdf`;
+        pdf.save(fileName);
+        
+        showStatus('PDF downloaded successfully!', 'success');
+        
+    } catch (error) {
+        console.error('Error creating PDF:', error);
+        showStatus('Error creating PDF. Please try again.', 'error');
+    } finally {
+        // Reset button state
+        downloadBtn.textContent = originalText;
+        downloadBtn.disabled = false;
+    }
+}
+
+// Helper function to show status messages (if not already defined)
+function showStatus(message, type = 'info') {
+    // Remove any existing status messages
+    const existingStatus = document.querySelector('.status-message');
+    if (existingStatus) {
+        existingStatus.remove();
+    }
+    
+    // Create status element
+    const statusEl = document.createElement('div');
+    statusEl.className = `status-message status-${type}`;
+    statusEl.textContent = message;
+    
+    // Add styles
+    statusEl.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 1000;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+        ${type === 'success' ? 'background: #10b981; color: white;' : ''}
+        ${type === 'error' ? 'background: #ef4444; color: white;' : ''}
+        ${type === 'info' ? 'background: #3b82f6; color: white;' : ''}
+    `;
+    
+    document.body.appendChild(statusEl);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        if (statusEl.parentNode) {
+            statusEl.style.opacity = '0';
+            statusEl.style.transform = 'translateX(100%)';
+            setTimeout(() => statusEl.remove(), 300);
+        }
+    }, 3000);
+}
     </script>
 </body>
 </html>
