@@ -1,0 +1,394 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Travel Maps - Free Version</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Saját CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="header">
+        <h1>🗺️ Custom Travel Maps</h1>
+        <p>Create beautiful travel maps with your photos</p>
+        <span class="free-badge">✨ 100% Free • No Registration Required</span>
+    </div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="map-section">
+                <h3 style="margin-bottom: 15px; color: #2d3748;">🎨 Choose Your Map Style</h3>
+                <div class="basemap-selector">
+                    <div class="basemap-option active" data-style="vintage">
+                        <div class="basemap-preview vintage-map"></div>
+                        <div class="basemap-title">Vintage Explorer</div>
+                    </div>
+                    <div class="basemap-option" data-style="adventure">
+                        <div class="basemap-preview adventure-map"></div>
+                        <div class="basemap-title">Adventure Trail</div>
+                    </div>
+                    <div class="basemap-option" data-style="minimalist">
+                        <div class="basemap-preview minimalist-map"></div>
+                        <div class="basemap-title">Clean & Simple</div>
+                    </div>
+                    <div class="basemap-option" data-style="artistic">
+                        <div class="basemap-preview artistic-map"></div>
+                        <div class="basemap-title">Artistic Blend</div>
+                    </div>
+                </div>
+                
+                <div id="map"></div>
+                
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn" onclick="generateMap()" id="generateBtn">
+                        🎨 Generate Your Custom Map
+                    </button>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <h3 style="margin-bottom: 15px; color: #2d3748;">📸 Upload Photos</h3>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📷</div>
+                    <p><strong>Drop photos here or click to browse</strong></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                        JPG, JPEG, HEIC with GPS data
+                    </p>
+                    <input type="file" id="fileInput" class="file-input" multiple accept=".jpg,.jpeg,.heic">
+                </div>
+                
+                <div class="photo-counter" id="photoCounter">
+                    📊 0 / 10 photos uploaded
+                </div>
+                
+                <div class="photo-grid" id="photoGrid"></div>
+                
+                <div id="statusMessage"></div>
+                
+                <div style="margin-top: 20px;">
+                    <button class="btn" onclick="clearAllPhotos()" style="background: #718096;">
+                        🗑️ Clear All Photos
+                    </button>
+                    <button class="btn" onclick="downloadMap()" id="downloadBtn" disabled>
+                        📄 Download Map (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h2 style="text-align: center; color: #2d3748; margin-bottom: 10px;">✨ Features</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                Everything you need to create amazing travel maps - completely free!
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Custom Basemaps</h4>
+                    <p>4 unique artistic map styles designed specifically for travel memories</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>GPS Auto-Placement</h4>
+                    <p>Photos automatically placed on map using GPS coordinates from EXIF data</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖨️</div>
+                    <h4>Print-Ready Maps</h4>
+                    <p>Generate high-quality PDFs perfect for printing at home or professionally</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>Privacy First</h4>
+                    <p>All processing happens in your browser. Photos never leave your device</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hosting-info">
+            <h3>🚀 Hosted on GitHub</h3>
+            <p>This application is hosted on <strong>GitHub</strong>.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                Using client-side processing • No data collection • Open source
+            </p> 
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+    
+    <script>
+        // Initialize map with custom style
+        const map = L.map('map').setView([47.8095, 13.0550], 8);
+        let currentTileLayer;
+        let uploadedPhotos = [];
+        let photoMarkers = [];
+        
+        // Custom basemap configurations
+        const basemaps = {
+            vintage: {
+                url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg',
+                attribution: '© Stamen Design, © OpenStreetMap contributors',
+                options: { subdomains: 'abcd' }
+            },
+            adventure: {
+                url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                attribution: '© OpenTopoMap contributors'
+            },
+            minimalist: {
+                url: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
+                attribution: '© CartoDB, © OpenStreetMap contributors'
+            },
+            artistic: {
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                attribution: '© Esri'
+            }
+        };
+        
+        // Initialize with vintage style
+        currentTileLayer = L.tileLayer(basemaps.vintage.url, {
+            attribution: basemaps.vintage.attribution,
+            ...basemaps.vintage.options
+        }).addTo(map);
+        
+        // Basemap selector functionality
+        document.querySelectorAll('.basemap-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.basemap-option').forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                
+                const style = option.dataset.style;
+                
+                // Remove current tile layer
+                if (currentTileLayer) {
+                    map.removeLayer(currentTileLayer);
+                }
+                
+                // Add new tile layer
+                const basemap = basemaps[style];
+                currentTileLayer = L.tileLayer(basemap.url, {
+                    attribution: basemap.attribution,
+                    ...basemap.options
+                }).addTo(map);
+            });
+        });
+        
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const photoCounter = document.getElementById('photoCounter');
+        const photoGrid = document.getElementById('photoGrid');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+        
+        uploadArea.addEventListener('click', () => {
+            if (uploadedPhotos.length < 10) {
+                fileInput.click();
+            }
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+        
+        function showStatus(message, type) {
+            statusMessage.innerHTML = `<div class="status-message status-${type}">${message}</div>`;
+            setTimeout(() => {
+                statusMessage.innerHTML = '';
+            }, 5000);
+        }
+        
+        function updatePhotoCounter() {
+            photoCounter.textContent = `📊 ${uploadedPhotos.length} / 10 photos uploaded`;
+            if (uploadedPhotos.length >= 10) {
+                photoCounter.style.background = '#fed7d7';
+                photoCounter.style.color = '#822727';
+                uploadArea.style.opacity = '0.5';
+                uploadArea.style.pointerEvents = 'none';
+            } else {
+                photoCounter.style.background = '#f0f4ff';
+                photoCounter.style.color = '#667eea';
+                uploadArea.style.opacity = '1';
+                uploadArea.style.pointerEvents = 'auto';
+            }
+            
+            // Enable/disable generate button
+            const generateBtn = document.getElementById('generateBtn');
+            generateBtn.disabled = uploadedPhotos.length === 0;
+        }
+        
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const availableSlots = 10 - uploadedPhotos.length;
+            if (availableSlots === 0) {
+                showStatus('Maximum 10 photos allowed in free version', 'error');
+                return;
+            }
+            
+            const filesToProcess = Math.min(files.length, availableSlots);
+            showStatus(`Processing ${filesToProcess} files...`, 'success');
+            
+            Array.from(files).slice(0, filesToProcess).forEach(file => {
+                if (file.type.match(/image\/(jpeg|jpg|heic)/)) {
+                    processPhoto(file);
+                }
+            });
+        }
+        
+        function processPhoto(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                EXIF.getData(file, function() {
+                    const lat = EXIF.getTag(this, "GPSLatitude");
+                    const lon = EXIF.getTag(this, "GPSLongitude");
+                    const latRef = EXIF.getTag(this, "GPSLatitudeRef");
+                    const lonRef = EXIF.getTag(this, "GPSLongitudeRef");
+                    const dateTime = EXIF.getTag(this, "DateTimeOriginal") || EXIF.getTag(this, "DateTime");
+                    
+                    if (lat && lon) {
+                        const latitude = convertDDToDM(lat, latRef);
+                        const longitude = convertDDToDM(lon, lonRef);
+                        
+                        const photo = {
+                            name: file.name,
+                            src: e.target.result,
+                            lat: latitude,
+                            lon: longitude,
+                            date: dateTime || 'Unknown'
+                        };
+                        
+                        uploadedPhotos.push(photo);
+                        addPhotoToMap(photo);
+                        addPhotoToGrid(photo);
+                        updatePhotoCounter();
+                        
+                        // Update map view
+                        if (uploadedPhotos.length === 1) {
+                            map.setView([latitude, longitude], 10);
+                        } else {
+                            const group = new L.featureGroup(photoMarkers);
+                            map.fitBounds(group.getBounds().pad(0.1));
+                        }
+                    } else {
+                        showStatus(`${file.name} has no GPS data`, 'error');
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function convertDDToDM(coordinate, ref) {
+            let decimal = coordinate[0] + coordinate[1]/60 + coordinate[2]/3600;
+            if (ref === "S" || ref === "W") decimal = decimal * -1;
+            return decimal;
+        }
+        
+        function addPhotoToMap(photo) {
+            const marker = L.marker([photo.lat, photo.lon]).addTo(map);
+            marker.bindPopup(`
+                <div style="text-align: center;">
+                    <img src="${photo.src}" style="max-width: 200px; max-height: 150px; border-radius: 8px;">
+                    <p style="margin-top: 10px; font-weight: bold;">${photo.name}</p>
+                    <p style="color: #666; font-size: 0.9rem;">${photo.date}</p>
+                </div>
+            `);
+            photoMarkers.push(marker);
+        }
+        
+        function addPhotoToGrid(photo) {
+            const img = document.createElement('img');
+            img.src = photo.src;
+            img.className = 'photo-thumbnail';
+            img.title = `${photo.name} - ${photo.date}`;
+            
+            img.addEventListener('click', () => {
+                map.setView([photo.lat, photo.lon], 13);
+                const marker = photoMarkers.find(m => 
+                    Math.abs(m.getLatLng().lat - photo.lat) < 0.0001 && 
+                    Math.abs(m.getLatLng().lng - photo.lon) < 0.0001
+                );
+                if (marker) marker.openPopup();
+            });
+            
+            photoGrid.appendChild(img);
+        }
+        
+        function clearAllPhotos() {
+            uploadedPhotos = [];
+            photoMarkers.forEach(marker => map.removeLayer(marker));
+            photoMarkers = [];
+            photoGrid.innerHTML = '';
+            updatePhotoCounter();
+            document.getElementById('downloadBtn').disabled = true;
+            showStatus('All photos cleared', 'success');
+        }
+        
+        function generateMap() {
+            if (uploadedPhotos.length === 0) {
+                showStatus('Please upload at least one photo', 'error');
+                return;
+            }
+            
+            const btn = document.getElementById('generateBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '⏳ Generating map...';
+            btn.disabled = true;
+            
+            // Simulate map generation
+            setTimeout(() => {
+                btn.textContent = '✅ Map generated!';
+                downloadBtn.disabled = false;
+                showStatus(`Custom map generated with ${uploadedPhotos.length} photos!`, 'success');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 2000);
+        }
+        
+        function downloadMap() {
+            // In a real implementation, this would generate and download a PDF
+            showStatus('PDF generation would be implemented with jsPDF library', 'success');
+            
+            // Simulate download
+            const link = document.createElement('a');
+            link.href = '#';
+            link.download = `travel-map-${new Date().getTime()}.pdf`;
+            link.textContent = 'Download';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            
+            setTimeout(() => {
+                document.body.removeChild(link);
+                showStatus('In real version: PDF would download automatically', 'success');
+            }, 100);
+        }
+        
+        // Initialize
+        updatePhotoCounter();
+    </script>
+</body>
+</html>
