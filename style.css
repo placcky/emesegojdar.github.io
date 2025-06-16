@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Raleway';
-    src: url(fonts/Raleway-VariableFont_wght.ttf);
+    src: url(../fonts/Raleway-VariableFont_wght.ttf);
 }
 
 /* CSS Variables for consistent theming */
@@ -28,7 +28,7 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
+*body {
     font-family: 'Raleway', Arial, sans-serif;
     background-color: var(--light-bg);
     color: var(--text-color);
