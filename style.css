@@ -1,579 +1,583 @@
 @font-face {
-    font-family:'Raleway';
+    font-family: 'Raleway';
     src: url(fonts/Raleway-VariableFont_wght.ttf);
 }
-body {
-    font-family: Arial, sans-serif;
+
+/* CSS Variables for consistent theming */
+:root {
+    --primary-color: #2E1300;
+    --secondary-color: #83502C;
+    --accent-color: #FFFAF0;
+    --text-color: #2E1300;
+    --light-bg: #FFFAF0f3;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+    --max-width: 1200px;
+    --section-padding: 80px 0;
+}
+
+/* Global Styles */
+* {
     margin: 0;
     padding: 0;
-    background-color: #FFFAF0f3;
-    color: #2E1300;
-    background-image: url('assets/compass2.png'); /* Új háttérkép */
-    background-position: calc(100% + 100px) center; /* A háttér középre igazítása */
-    background-repeat: no-repeat; /* A háttér ne ismétlődjön */
-    background-size: 900px; /* A háttér kitöltse az egész képernyőt */
-    background-attachment: fixed; /* A háttér rögzítése, ha görgetjük az oldalt */
-    z-index: 999;
-    height: 100vh; /* Beállítjuk, hogy az oldal magassága 100% legyen */
+    box-sizing: border-box;
 }
 
-
-header {
-    font-family: 'Gill Sans MT';
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: fixed; /* A fejléc rögzítése az ablak tetejére */
-    top: 0; /* Az ablak tetején helyezkedjen el */
-    left: 0; /* Az ablak bal oldalán helyezkedjen el */
-    right: 0; /* Az ablak jobb oldalán helyezkedjen el */
-    z-index: 1000; /* Magas z-index az előtérbe helyezéshez */
+html {
+    scroll-behavior: smooth;
 }
 
-header::before {
-    content: '';
-    position: absolute;
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: url('assets/compass2.png');
+    background-position: calc(100% + 100px) center;
+    background-repeat: no-repeat;
+    background-size: 900px;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Header */
+.main-header {
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-color: rgba(46, 19, 0, 0.20); /* Átlátszó háttérszín */
-    z-index: -1; /* Háttérbe helyezés */
+    z-index: 1000;
+    background: rgba(46, 19, 0, 0.95);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
 }
 
-
-/* A logók konténerének beállítása */
-.logo-container {
+.navbar {
     display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Logók stílusa */
-.logo img {
-    height: 40px;
-    width: auto;
-}
-
-/* A navigációs menü beállítása */
-nav {
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-}
-
-nav a:hover {
-    color: #83502C;
-    transition: transform 0.3s ease-in-out;
-    transform: scale(1.1);
-}
-
-/* A fő tartalom (main) középre igazítása */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Középre igazítja az összes szakaszt */
-    padding: 20px;
-}
-
-/* Az About szakasz középre rendezése */
-#about, #gallery, #blog, #contact {
-    font-family: 'Raleway';
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Középre igazítja a tartalmat */
-    justify-content: center;
-    text-align: left;
-    margin-bottom: 30px;
-    width: 100%; /* Az összes szakasz teljes szélességű */
-}
-
-
-
-/* A profilkép és szöveg elrendezése az About szakaszban */
-#about .about-content {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    width: 50%; /* A szövegtörzs szélessége, középre igazításhoz */
-    margin-left: auto;
-    margin-right: auto;
+    padding: 15px 20px;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
-/* A szövegre vonatkozó stílus */
-.about-content p {
-    max-width: 600px; /* A szöveg maximális szélessége */
-    line-height: 1.8; /* Sortávolság javítása */
-    text-align: justify; /* Balra igazítás */
-    margin: 20px 0; /* Nincs margó a szöveg körül */
-}
-
-/* Profilkép stílus */
-.profile img {
-    max-width: 200px; /* Kép maximális szélessége */
-    border-radius: 30px;
-    margin-left: 20px; /* Bal oldali margó */
-}
-
-
-/* Education lista stílusa */
-.about-text ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.about-text li {
-    margin-bottom: 5px;
-}
-.experience, .volunteer, .education, .blog {
-    margin-top: 20px;
-    text-align: left; /* Balra zárt szöveg */
-    width: 50%; /* A szövegtörzs szélessége, középre igazításhoz */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.experience h3, .volunteer h3, .education h3 {
-    font-size: 24px;
-    color: #2E1300;
-    margin-bottom: 20px;
-    text-align: left; /* Címek középre igazítása */
-}
-
-.experience p, .education p {
-    font-size: 16px;
-    line-height: 1.8; /* Jobb olvashatóság érdekében */
-    margin: 10px 0; /* Függőleges margó minden bekezdés között */
-}
-
-@media (max-width: 1100px) {
-    #about .about-content, 
-    .experience, 
-    .education, 
-    .volunteer,
-    #blog {
-        width: 90% !important;
-        /*width: auto;  Automatikusan alkalmazkodik */
-         /*flex-direction: column; Opcionális: tartalom oszlopos elrendezése */
-        /*text-align: center;  Középre igazított szöveg */
-    }
-}
-
-/* Galéria kollázs */
-.collage {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 2 kép egy sorban, ha elfér */
-    gap: 30px; /* Képek közötti távolság */
-    margin-bottom: 20px;
-}
-/*************************************************************************************************/
-/* Galéria képek stílusa */
-.collage img {
-    width: 250px; /* A képek szélessége a konténerhez igazodik */
-    height: auto; /* Az arányok megtartása érdekében */
-    object-fit: cover; /* A képek tartalma kitölti a rendelkezésre álló teret */
-    border-radius: 5px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a képek alatt */
-    cursor: pointer; /* Mutatja, hogy kattintható */
-    transition: transform 0.3s ease; /* Animáció az egér felette mozgatásakor */
-}
-
-.collage img:hover {
-    transform: scale(1.05); /* A képek nagyítása hover állapotban */
-}
-#image-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Három oszlop */
-    gap: 10px; /* Képek közötti távolság */
-    margin-top: 20px;
-}
-
-#image-container img {
-    width: 100%; /* A képek szélessége kitölti a konténert */
-    height: auto; /* Magasság arányos lesz a szélességgel */
-    border-radius: 8px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék a képek alatt */
-    transition: transform 0.3s ease-in-out; /* Animáció a képeknek */
-}
-
-#image-container img:hover {
-    transform: scale(1.05); /* Kép nagyítása hover hatásra */
-}
-
-.back-link {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #2E1300;
-    font-weight: bold;
-    padding: 10px;
-    background-color: #FFFAF0;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.back-link:hover {
-    background-color: #83502C;
-    color: #fff;
-}
-
-/* Lightbox overlay */
-#lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+.logo-group {
     display: flex;
-    justify-content: center;
+    gap: 20px;
     align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-}
-
-#lightbox.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Bezáró gomb stílusa */
-#close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Bezáró gomb a lightbox-hoz */
-#close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* "More..." link stílusa */
-.more-link {
-    display: inline-block;
-    margin-top: 15px;
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-.more-link:hover {
-    color: white;
-}
-
-#about h4 {
-    font-size: 3vw; /* Állítsd a kívánt betűméretet */
-    font-weight: bold; /* Ha szeretnéd vastagon szedni */
-    text-align: center; /* Igazítsd középre, ha szükséges */
-    margin-top: 20px; /* Extra távolság felfelé, ha kell */
-}
-
-/* Blog szekció */
-#blog {
-    font-family: 'Raleway';
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Középre igazítás eltávolítása */
-    justify-content: flex-start; /* Középre igazítás eltávolítása */
-    text-align: justify; /* Balra igazítás biztosítása */
-    margin: 100px 0;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    width: 50%; /* Az összes szakasz teljes szélességű */
-    line-height: 1.8;
-}
-
-/* A blog cím balra igazítása */
-#blog h2 {
-    text-align: left; /* Balra igazított cím */
-    color: #2E1300; /* Szöveg színe */
-    margin-bottom: 10px; /* Távolság a cím és a bejegyzések között */
-    width: 100%; /* Teljes szélesség */
-    white-space: nowrap; /* Nem törik meg a szöveg */
-    overflow: hidden; /* A túlcsorduló szöveget elrejti */
-    text-overflow: ellipsis; /* Három ponttal jelzi a túl hosszú szöveget */
-}
-
-
-/* A bejegyzések szakasza */
-.blog-posts {
-    font-family: 'Raleway';
-    display: flex;
-    flex-direction: column;
-    text-align: flex; /* Balra igazított szöveg */
-    margin: 100px 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%; /* Teljes szélesség */
-    gap: 0;
-}
-
-/* Egyes blog bejegyzések */
-.blog-post {
-    background: rgba(0, 0, 0, 0); /* Átlátszó háttér */
-    border: none; /* Nincs keret */
-    box-shadow: none; /* Nincs árnyék */
-    border-radius: 0px;
-    margin-left: 0; /* Balra igazítva */
-    margin-right: 0; /* Balra igazítva */
-}
-
-
-/* A blog bejegyzés részleteinek balra igazítása */
-.blog-post p {
-    text-align: left; /* Balra igazított bejegyzés részletek */
-    color: #2E1300; /* A szöveg színe */
-    font-size: 16px; /* Betűméret */
-    line-height: 1.6; /* Jobb olvashatóság */
-}
-
-/* A "More..." link stílusa */
-.more-link {
-    display: inline-block;
-    text-align: center;
-    background-color: #2E1300;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.more-link:hover {
-    transform: scale(1.1);
-    background-color: #83502C;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Kontakt szakasz */
-#contact {
-    font-family: 'Raleway';
-    text-align: center;
-    margin: 40px 0;
-}
-
-#contact h2 {
-    font-size: 24px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.contact-icon img {
-    width: 40px;
+.nav-logo {
     height: 40px;
-    transition: transform 0.3s ease-in-out;
+    width: auto;
+    transition: var(--transition);
 }
 
-.contact-icon img:hover {
-    transform: scale(1.2);
+.nav-logo:hover {
+    transform: scale(1.1);
 }
 
-/* Footer árnyék (színátmenetes sáv) */
-.footer-shadow {
-    height: 15px; /* A sáv magassága */
-    background: linear-gradient(to bottom, transparent, #996c4d); /* Színátmenet árnyékhatáshoz */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
 }
 
-/* Footer stílus */
-.footer {
+.nav-link {
     font-family: 'Gill Sans MT', sans-serif;
-    background-color: #FFFAF0f3; /* Egyszínű footer */
-    color: rgb(87, 87, 87);
-    text-align: center;
-    padding: 10px 0;
-    position: bottom;
-}
-
-/* Reszponzív elrendezés mobilra */
-@media (max-width: 768px) {
-    .collage {
-        grid-template-columns: 1fr; /* Egy oszlopos elrendezés */
-    }
-
-    .blog-posts {
-        grid-template-columns: 1fr; /* Egy oszlopos elrendezés */
-    }
-}
-
-.blog2img {
-    display: flex;
-    flex-direction: column; /* Egymás alatti elrendezés */
-    gap: 20px; /* Távolság a képek között */
-    margin-top: 10px;
-    margin-bottom: 40px;
-    align-items: center; /* Középre igazítás */
-}
-
-.blog2img img {
-    width: 100%;
-    max-width: 600px; /* Maximum szélesség egy képre */
-    height: auto; /* Arányok megtartása */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opciós árnyék */
-}
-
-.blog1img {
-    display: grid; /* Rácsos elrendezés */
-    grid-template-columns: repeat(2, 1fr); /* 2 oszlop, egyenlő szélességgel */
-    gap: 20px; /* Távolság a képek között */
-    align-items: center; /* Vertikális középre igazítás */
-    justify-items: center; /* Horizontális középre igazítás */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 100%; /* A szülőelem szélessége */
-}
-
-.blog1img img {
-    max-width: 100%; /* Kép teljes szélessége a cellán belül */
-    max-height: 450px; /* Maximum magasság */
-    height: auto; /* Arányos méretezés */
-    object-fit: cover; /* Kép kitöltése az arányok megtartásával */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Árnyék */
-    margin: 0 auto; /* Extra biztonság a középre igazításhoz */
-    display: block; /* A képek blokkszintű elemként viselkednek */
-}
-
-.lightbox2 {
-    display: none; /* Alapértelmezésben rejtett */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.lightbox2.visible {
-    display: flex; /* Láthatóvá válik */
-}
-
-.lightbox2 img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.close-btn:hover {
-    background: lightgray;
-}
-
-/* linkeknek ne legyen színe*/
-a {
-    font-family:'Gill Sans MT';
-    color: #2E1300; /* Egyedi szín a linkekhez */
-    text-decoration: line; /* Nincs aláhúzás */
-    
-}
-a:hover {
-    color: #83502C; /* Hover állapot színe */
-    transition: color; /* Animáció */
-    
-}
-
-/* Lightbox alapstílusok */
-#lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Lightbox aktív állapotban */
-#lightbox.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Lightbox képek */
-#lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* Bezáró gomb (X) */
-#close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
     color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
     cursor: pointer;
+    gap: 4px;
 }
 
-#map-section {
-    width: 50%; /* Biztosítja, hogy a térkép és a storymaps szekció is 50%-os szélességű legyen */
-    max-width: 100%; /* Maximum szélesség beállítása */
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: var(--transition);
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 80px;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: var(--section-padding);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
+}
+
+.hero-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-align: justify;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+    transition: var(--transition);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+/* Section Styles */
+section {
+    padding: var(--section-padding);
+}
+
+.section-header {
     text-align: center;
-    margin: 0 auto; /* A szekciókat középre igazítja */
-    padding: 0;
+    margin-bottom: 60px;
 }
 
-#storymaps {
-    width: 50%; /* A szekció szélességét beállítjuk */
-    max-width: 70%; /* Maximum szélesség */
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* About Section */
+.about-section {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: var(--secondary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: calc(50% - 30px);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: calc(50% + 30px);
+    text-align: left;
+}
+
+.timeline-marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    top: 0;
+}
+
+.timeline-item:nth-child(odd) .timeline-marker {
+    right: -40px;
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+    left: -40px;
+}
+
+.timeline-content {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow);
+}
+
+.timeline-period {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timeline-company {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Cards Layout */
+.volunteer-grid,
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.volunteer-card,
+.education-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.volunteer-card:hover,
+.education-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+.volunteer-period,
+.education-period {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.volunteer-title,
+.education-degree {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.volunteer-company,
+.education-school {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.education-details {
+    color: var(--text-color);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.contact-section .section-title,
+.contact-section .section-subtitle {
+    color: white;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.contact-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.contact-item {
+    margin-bottom: 30px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.social-link img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 40px 0;
     text-align: center;
-    padding: 0;
-    margin: 0 auto; /* Középre igazítja */
 }
 
-#storymaps img {
-    width: 100%; /* A képet 100%-ban a szülő szekció szélességére állítjuk */
-    height: auto; /* A magasságot automatikusan igazítjuk */
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-address {
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: calc(100% - 60px);
+        left: 40px !important;
+        text-align: left !important;
+    }
+    
+    .timeline-marker {
+        left: -30px !important;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .social-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .volunteer-grid,
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+    }
+    
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-marker {
+        display: none;
+    }
 }

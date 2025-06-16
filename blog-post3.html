@@ -1,64 +1,473 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>International Spring School</title>
+    <title>International Spring School on Visualisation - ISSonVIS 2025 - Emese Gojdar</title>
     <link rel="icon" href="assets/compass_AI.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Raleway';
+            src: url(fonts/Raleway-VariableFont_wght.ttf);
+        }
+
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #2E1300;
+            --secondary-color: #83502C;
+            --accent-color: #FFFAF0;
+            --text-color: #2E1300;
+            --light-bg: #FFFAF0f3;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('assets/compass2.png');
+            background-position: calc(100% + 100px) center;
+            background-repeat: no-repeat;
+            background-size: 900px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(46, 19, 0, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: 'Gill Sans MT', sans-serif;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: var(--section-padding);
+        }
+
+        /* Blog Post Styles */
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
+            border-radius: var(--border-radius);
+        }
+
+        .blog-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .blog-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-style: italic;
+        }
+
+        .blog-meta {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .blog-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .blog-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .blog-images {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(131, 80, 44, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .blog-images img {
+            max-width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        /* Highlight boxes for key topics */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(131, 80, 44, 0.1) 0%, rgba(46, 19, 0, 0.05) 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .key-topics {
+            background: linear-gradient(135deg, rgba(131, 80, 44, 0.08) 0%, rgba(46, 19, 0, 0.03) 100%);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            border: 1px solid rgba(131, 80, 44, 0.2);
+        }
+
+        .key-topics h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .topic-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .topic-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .topic-item p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-address {
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .blog-content {
+                padding: 30px 20px;
+            }
+            
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-topics {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .blog-content {
+                padding: 20px 15px;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .highlight-box, .key-topics {
+                padding: 20px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <div class="logo">
-                <img src="assets/eplus.jpg" alt="Logo 2"> <!-- Második logó -->
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-group">
+                    <img src="assets/eplus.jpg" alt="E+ Logo" class="nav-logo">
+                    <img src="assets/plus.jpg" alt="Plus Logo" class="nav-logo">
+                    <img src="assets/upol.png" alt="UPOL Logo" class="nav-logo">
+                </div>
             </div>
-            <div class="logo">
-                <img src="assets/plus.jpg" alt="Logo 1"> <!-- Első logó -->
+            <ul class="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About me</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </div>
-            <div class="logo">
-                <img src="assets/upol.png" alt="Logo 2"> <!-- Második logó -->
-            </div>
-        </div>
-        <nav>
-            <a href="index.html#about">About me</a>
-            <a href="index.html#gallery">Gallery</a>
-            <a href="index.html#blog">Blog</a>
-            <a href="index.html#contact">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <section id="blog">
-            <h2>International Spring School on Visualisation - ISSonVIS - 2025 <br>
-                Seeing Through Lies: Mapping Trust in the Age of Misinformation</h2>
-            <div class="blog-post-content">
-                <p>At the beginning of April, we participated in the two-day intensive SpringSchool organized by Palacký University Olomouc.
-                    During the online presentations, we covered various topics, such as how much we can trust maps and how experts can manipulate maps and data so that they are visually believable, for example for various misleading political purposes. This also placed great emphasis on the responsibility of cartographers and data visualizers in map making. The speakers also drew attention to how the vast amount of information on the Internet shows how easily users can be misled - for example, with the help of eye tracking technology.
-                    There was even more talk about the importance of pulp cartography and the psychological background of the use of maps, also based on the aspects examined by eye tracking. For me, this was one of the most interesting topics from the presentations, it completely transformed my perspective on a few things about myself and maps and people's behavioral habits.
-                    In the practical part of the course, common mistakes in mapmaking were first presented, and then we learned how to fix them. We received simple yet effective tips on how to create more aesthetic, clear and informative maps.
-                    Finally, we closed with a timely topic: how to filter out fake news and misleading map content using artificial intelligence and user modeling.
-                    Overall, this course not only provided professional knowledge, but also brought about a change in perspective. I will definitely be much more conscious in interpreting – and creating – maps in the future. And I have already saved the book How to Lie with Maps by Mark Monmonier for later reading.
-                </p><br>
-                    
-                    
-                <div class="blog2img">
-                    <img src="assets/gallery/certificate_SS_EG.png" alt="Summer School Image 1">
-                </div>            
+    <main class="main-content">
+        <!-- Blog Header -->
+        <div class="blog-header">
+            <h1 class="blog-title">International Spring School on Visualisation</h1>
+            <h2 class="blog-subtitle">Seeing Through Lies: Mapping Trust in the Age of Misinformation</h2>
+            <p class="blog-meta">ISSonVIS 2025 • Palacký University Olomouc • April 2025</p>
+        </div>
 
+        <!-- Blog Content -->
+        <article class="blog-content">
+            <p class="blog-text">
+                At the beginning of April, we participated in the two-day intensive Spring School organized by Palacký University Olomouc. This online event provided an eye-opening exploration into the complex relationship between data visualization, trust, and misinformation in our digital age.
+            </p>
+
+            <div class="key-topics">
+                <h3>Key Learning Areas</h3>
+                <div class="topics-grid">
+                    <div class="topic-item">
+                        <h4>Map Trust & Manipulation</h4>
+                        <p>How experts can manipulate maps and data for misleading political purposes</p>
+                    </div>
+                    <div class="topic-item">
+                        <h4>Cartographer Responsibility</h4>
+                        <p>The ethical obligations of cartographers and data visualizers</p>
+                    </div>
+                    <div class="topic-item">
+                        <h4>Eye Tracking Technology</h4>
+                        <p>Understanding how users can be misled through visual manipulation</p>
+                    </div>
+                    <div class="topic-item">
+                        <h4>Pulp Cartography</h4>
+                        <p>Psychological aspects of map usage and behavioral patterns</p>
+                    </div>
+                </div>
             </div>
-            <a href="index.html#blog" class="back-link">Back</a>
-        </section>
+
+            <p class="blog-text">
+                During the online presentations, we covered various topics, such as how much we can trust maps and how experts can manipulate maps and data so that they are visually believable, for example for various misleading political purposes. This also placed great emphasis on the responsibility of cartographers and data visualizers in map making.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Personal Insight</h3>
+                <p>The discussion on pulp cartography and the psychological background of map usage was one of the most interesting topics for me. It completely transformed my perspective on maps and people's behavioral habits, examined through eye-tracking research.</p>
+            </div>
+
+            <p class="blog-text">
+                The speakers also drew attention to how the vast amount of information on the Internet shows how easily users can be misled - for example, with the help of eye tracking technology. There was even more talk about the importance of pulp cartography and the psychological background of the use of maps, also based on the aspects examined by eye tracking.
+            </p>
+
+            <p class="blog-text">
+                In the practical part of the course, common mistakes in mapmaking were first presented, and then we learned how to fix them. We received simple yet effective tips on how to create more aesthetic, clear and informative maps. Finally, we closed with a timely topic: how to filter out fake news and misleading map content using artificial intelligence and user modeling.
+            </p>
+
+            <div class="blog-images">
+                <img src="assets/gallery/certificate_SS_EG.png" alt="International Spring School Certificate - Emese Gojdar">
+            </div>
+
+            <div class="highlight-box">
+                <h3>Course Impact</h3>
+                <p>This course not only provided professional knowledge, but also brought about a change in perspective. I will definitely be much more conscious in interpreting – and creating – maps in the future. I have already saved the book "How to Lie with Maps" by Mark Monmonier for later reading.</p>
+            </div>
+
+            <a href="index.html#blog" class="back-button">← Back to Blog</a>
+        </article>
     </main>
-    <div class="footer-shadow"></div>
-    <footer>
-        <div class="footer">
-        &copy;  Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
-        Department of Geoinformatics – Z_GIS<br>
-        Schillerstraße 30<br>
-        5020 Salzburg<br>
-        Austria
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Emese Gojdar. All rights reserved.</p>
+                    <div class="footer-address">
+                        <p>Department of Geoinformatics – Z_GIS</p>
+                        <p>Schillerstraße 30, 5020 Salzburg, Austria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-    </div>
 </body>
 </html>

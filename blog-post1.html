@@ -1,61 +1,387 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Data from Space 2023: BiDS - Emese Gojdar's ePortfolio</title>
+    <title>Big Data from Space 2023: BiDS - Emese Gojdar</title>
     <link rel="icon" href="assets/compass_AI.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Raleway';
+            src: url(fonts/Raleway-VariableFont_wght.ttf);
+        }
+
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #2E1300;
+            --secondary-color: #83502C;
+            --accent-color: #FFFAF0;
+            --text-color: #2E1300;
+            --light-bg: #FFFAF0f3;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('assets/compass2.png');
+            background-position: calc(100% + 100px) center;
+            background-repeat: no-repeat;
+            background-size: 900px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(46, 19, 0, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: 'Gill Sans MT', sans-serif;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: var(--section-padding);
+        }
+
+        /* Blog Post Styles */
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
+            border-radius: var(--border-radius);
+        }
+
+        .blog-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .blog-meta {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .blog-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .blog-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .blog-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(131, 80, 44, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .blog-images img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .blog-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            background: rgba(131, 80, 44, 0.1);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin: 20px 0;
+        }
+
+        .blog-link:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content; /* csak akkora lesz, amekkora a tartalom */
+            max-width: 200px;   /* ha kell, szabályozd a maximumot */
+            margin-top: 40px;
+            margin-bottom: 10px;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-address {
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .blog-content {
+                padding: 30px 20px;
+            }
+            
+            .blog-images {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .blog-images img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .blog-content {
+                padding: 20px 15px;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <div class="logo">
-                <img src="assets/eplus.jpg" alt="Logo 2"> <!-- Második logó -->
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-group">
+                    <img src="assets/eplus.jpg" alt="E+ Logo" class="nav-logo">
+                    <img src="assets/plus.jpg" alt="Plus Logo" class="nav-logo">
+                    <img src="assets/upol.png" alt="UPOL Logo" class="nav-logo">
+                </div>
             </div>
-            <div class="logo">
-                <img src="assets/plus.jpg" alt="Logo 1"> <!-- Első logó -->
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </div>
-            <div class="logo">
-                <img src="assets/upol.png" alt="Logo 2"> <!-- Második logó -->
-            </div>
-        </div>
-        <nav>
-            <a href="index.html#about">About me</a>
-            <a href="index.html#gallery">Gallery</a>
-            <a href="index.html#blog">Blog</a>
-            <a href="index.html#contact">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <section id="blog">
-            <h2>Big Data from Space 2023: BiDS</h2>
-            <div class="blog-post-content">
-                <p>Last year, in November 2023, I followed one of my favorite "passion" and traveled to Vienna for the ESA Big Data from Space conference. The exhibition lasted from November 6 to 9 and all professionals interested were welcome. I have never participated in such a large conference before and this event was very useful and inspiring for me. Many really excellent professionals gave speeches about their work and research, it was really inspiring to see so many people working to save our environment on Earth, so that our planet can remain a livable place for humanity. It was at this conference that I heard about the Copernicus Master's program for the first time, and after this I got the idea that I should apply for the course.</p><br>
-                
-                <div class="blog1img">
-                    <img src="assets/gallery/IMG_2796.jpg" alt="Summer School Image 1">
-                    <img src="assets/gallery/IMG_2929.jpg" alt="Summer School Image 2">
-                    <img src="assets/gallery/IMG_2923.jpg" alt="Summer School Image 2">
-                    <img src="assets/gallery/IMG_2802.jpg" alt="Summer School Image 2">
-                </div>
+    <main class="main-content">
+        <!-- Blog Header -->
+        <div class="blog-header">
+            <h1 class="blog-title">Big Data from Space 2023: BiDS</h1>
+            <p class="blog-meta">Conference Experience • Vienna, Austria • November 2023</p>
+        </div>
 
-                <a href="https://www.bigdatafromspace2023.org/">BiDS 2023 webpage</a>
-                <p>Page is in progress...</p>
+        <!-- Blog Content -->
+        <article class="blog-content">
+            <p class="blog-text">
+                Last year, in November 2023, I followed one of my favorite "passions" and traveled to Vienna for the ESA Big Data from Space conference. The exhibition lasted from November 6 to 9 and all professionals interested were welcome. I have never participated in such a large conference before and this event was very useful and inspiring for me.
+            </p>
+
+            <p class="blog-text">
+                Many really excellent professionals gave speeches about their work and research, it was truly inspiring to see so many people working to save our environment on Earth, so that our planet can remain a livable place for humanity. It was at this conference that I heard about the Copernicus Master's program for the first time, and after this I got the idea that I should apply for the course.
+            </p>
+
+            <div class="blog-images">
+                <img src="assets/gallery/IMG_2796.jpg" alt="BiDS Conference Image 1">
+                <img src="assets/gallery/IMG_2929.jpg" alt="BiDS Conference Image 2">
+                <img src="assets/gallery/IMG_2923.jpg" alt="BiDS Conference Image 3">
+                <img src="assets/gallery/IMG_2802.jpg" alt="BiDS Conference Image 4">
             </div>
-            <a href="index.html#blog" class="back-link">Back</a>
-        </section>
+
+            <a href="https://www.bigdatafromspace2023.org/" target="_blank" class="blog-link">
+                Visit BiDS 2023 Official Website
+            </a>
+
+            <a href="blog.html" class="back-button">
+            ← Back to Blog
+            </a>
+        </article>
     </main>
-    <div class="footer-shadow"></div>
-    <footer>
-        <div class="footer">
-        &copy;  Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
-        Department of Geoinformatics – Z_GIS<br>
-        Schillerstraße 30<br>
-        5020 Salzburg<br>
-        Austria
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Emese Gojdar. All rights reserved.</p>
+                    <div class="footer-address">
+                        <p>Department of Geoinformatics – Z_GIS</p>
+                        <p>Schillerstraße 30, 5020 Salzburg, Austria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-    </div>
 </body>
 </html>

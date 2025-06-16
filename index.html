@@ -1,135 +1,214 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emese Gojdar's ePortfolio</title>
+    <title>Emese Gojdar - Portfolio</title>
     <link rel="icon" href="assets/compass_AI.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <div class="logo-container">
-        <div class="logo">
-            <img src="assets/eplus.jpg" alt="Logo 1">
-        </div>
-        <div class="logo">
-            <img src="assets/plus.jpg" alt="Logo 2">
-        </div>
-        <div class="logo">
-            <img src="assets/upol.png" alt="Logo 3">
-        </div>
-    </div>
-    <nav>
-        <a href="#about">About me</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-        <a href="https://placcky.github.io/emesegojdar.github.io/travel-map-app/travel-map.html" target="_blank">Travel Map</a>
-    </nav>
-</header>
- 
-    <main>
-        <section id="about">
-            <h4 >Emese Gojdar</h4>
-            <div class="about-content">
-
-               
-                <p>Welcome to my page! I am a geographer with a BSc degree, currently pursuing a double master’s degree in the Copernicus Master in Digital Earth program, a joint initiative between the University of Salzburg and Palacký University Olomouc. My interests lie in environmental protection, sustainability, and climate change, combined with my passion for arts, digital visualization, and illustration. I strive to merge scientific knowledge with creative expression to contribute to a more sustainable and visually informed future.</p>
-                <div class="profile">
-                    <img src="assets/image1" alt="Profilkép">
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-group">
+                    <img src="assets/eplus.jpg" alt="E+ Logo" class="nav-logo">
+                    <img src="assets/plus.jpg" alt="Plus Logo" class="nav-logo">
+                    <img src="assets/upol.png" alt="UPOL Logo" class="nav-logo">
                 </div>
             </div>
-        
-            <div class="experience">
-                <h3>Experience</h3>
-                <p><strong>GIS ENGINEER </strong>- 2022 Feb - 2024 Aug<br>
-                    Mott MacDonald Hungary Ltd.</p>
-                <p><strong>GIS ANALYST, ORGANIZER </strong>- 2020 Oct -2022 Jan<br>
-                    Ulyssys Software Development and Consulting Ltd.</p>
-                <p><strong>INTERNSHIP</strong>- 2019 Jun - 2019 Dec<br>
-                    University of Szeged -  OSL Research Laborator</p>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </div>
+        </nav>
+    </header>
 
-            <div class="volunteer">
-                <h3>Volunteering</h3>
-                <p><strong>GIS TECHNICIAN & SOCIAL MEDIA ASSISTANT</strong>- 2023 Oct - 2024 Jan<br>
-                    beeco Ltd.</p> 
-            </div>
-
-            <div class="education">
-                <h3>Education</h3>
-                <p><strong>Paris Lodron University of Salzburg</strong> - 2024 - present<br>
-                    MSc., double degree, (EMJM) Copernicus Master in Digital Earth - Geoinformatics & Earth Oberservation - GeoVisualization & GeoCommunication</p>
-                <p><strong>University of Szeged Faculty of Science and Informatics</strong> - 2017 - 2021<br>
-                    Bsc., Geography - Geoinformatics</p>
-                <p><strong>School of Business Szeged</strong> - 2016 - 2017 <br>
-                    Certificate of Professional Qualification - Tourism and Travel Services</p>
-                <p><strong>University of Szeged Juhász Gyula Faculty of Education</strong> -  2015 - 2016<br>
-                    BA., Visual Representation (Incomplete - 2 semesters completed)</p>
-            </div>
-            
-            <section id="gallery">
-                <h2>Gallery</h2>
-                <div class="collage">
-                    <img src="assets/1706089662487.jpg" alt="Image 3" class="gallery-image">
-                    <img src="assets/ArcticIceDecline_EG24.png" alt="Image 1" class="gallery-image">
-                    <img src="assets/Layout.jpg" alt="Image 2" class="gallery-image">  
-                </div>
-                <a href="gallery.html" class="more-link">More...</a>
-            </section>
-            
-            <!-- Lightbox struktúra a képek kinagyításához -->
-            <div id="lightbox" class="hidden">
-                <span id="close">&times;</span>
-                <img id="lightbox-img" src="" alt="Full-size image">
-            </div>
-            
-            <section id="blog">
-                <h2>Blog</h2>
-                <div class="blog-posts">
-                    <div class="blog-post">
-                        <h3>Big Data from Space 2023: BiDS Vienna</h3>
-                        <p>Last year, in November 2023, I followed one of my favorite "passion" and traveled to Vienna for the ESA Big Data from Space conference.</p>
-                        <a href="blog-post1.html" class="more-link">More...</a>
-                     </div>
-                    <div class="blog-post">
-                        <h3>Sinergise Summer School 2023 - Ljubljana</h3>
-                        <p>In the summer of 2023, I had the opportunity to participate in the Summer School organized by Sinergise...</p>
-                        <a href="blog-post2.html" class="more-link">More...</a>
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Emese Gojdar</h1>
+                        <p class="hero-subtitle">Geographer & Digital Earth Specialist</p>
+                        <p class="hero-description">
+                            Environmental protection, sustainability, and climate change researcher with expertise in digital visualization and geoinformatics. Currently pursuing a double master's degree in the Copernicus Master in Digital Earth program.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#about" class="btn btn-primary">Learn More</a>
+                            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        </div>
                     </div>
-                    <div class="blog-post">
-                        <h3>ISSonVIS 2025, International Spring School on Visualization</h3>
-                        <p>At the beginning of April, we participated in the two-day intensive SpringSchool...</p>
-                        <a href="blog-post3.html" class="more-link">More...</a>
+                    <div class="hero-image">
+                        <div class="image-container">
+                            <img src="assets/image1" alt="Emese Gojdar" class="profile-image">
+                        </div>
                     </div>
                 </div>
-            </section>                                 
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/emesegojdar/" target="_blank" class="contact-icon">
-                    <img src="assets/linkedin1.png" alt="LinkedIn" title="LinkedIn">
-                </a>
-                <a href="https://github.com/placcky" target="_blank" class="contact-icon">
-                    <img src="assets/github(1).png" alt="GitHub" title="GitHub">
-                </a>
-                <a href="mailto:emese.gojdar@gmail.com" class="contact-icon">
-                    <img src="assets/mail.png" alt="Email" title="Email">
-                </a>
             </div>
-        </section>        
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Passionate about merging scientific knowledge with creative expression</p>
+                </div>
+                <div class="about-content">
+                    <p class="about-text">
+                        Welcome to my portfolio! I am a geographer with a BSc degree, currently pursuing a double master's degree in the Copernicus Master in Digital Earth program, a joint initiative between the University of Salzburg and Palacký University Olomouc. My interests lie in environmental protection, sustainability, and climate change, combined with my passion for arts, digital visualization, and illustration. I strive to merge scientific knowledge with creative expression to contribute to a more sustainable and visually informed future.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Feb 2022 - Aug 2024</div>
+                            <h3 class="timeline-title">GIS Engineer</h3>
+                            <p class="timeline-company">Mott MacDonald Hungary Ltd.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Oct 2020 - Jan 2022</div>
+                            <h3 class="timeline-title">GIS Analyst & Organizer</h3>
+                            <p class="timeline-company">Ulyssys Software Development and Consulting Ltd.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Jun 2019 - Dec 2019</div>
+                            <h3 class="timeline-title">Internship</h3>
+                            <p class="timeline-company">University of Szeged - OSL Research Laboratory</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteering Section -->
+        <section class="volunteer-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Volunteering</h2>
+                </div>
+                <div class="volunteer-grid">
+                    <div class="volunteer-card">
+                        <div class="volunteer-period">Oct 2023 - Jan 2024</div>
+                        <h3 class="volunteer-title">GIS Technician & Social Media Assistant</h3>
+                        <p class="volunteer-company">beeco Ltd.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-period">2024 - Present</div>
+                        <h3 class="education-degree">MSc. Copernicus Master in Digital Earth</h3>
+                        <p class="education-school">Paris Lodron University of Salzburg</p>
+                        <p class="education-details">Double degree (EMJM) - Geoinformatics & Earth Observation - GeoVisualization & GeoCommunication</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-period">2017 - 2021</div>
+                        <h3 class="education-degree">BSc. Geography - Geoinformatics</h3>
+                        <p class="education-school">University of Szeged Faculty of Science and Informatics</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-period">2016 - 2017</div>
+                        <h3 class="education-degree">Certificate of Professional Qualification</h3>
+                        <p class="education-school">School of Business Szeged</p>
+                        <p class="education-details">Tourism and Travel Services</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-period">2015 - 2016</div>
+                        <h3 class="education-degree">BA. Visual Representation</h3>
+                        <p class="education-school">University of Szeged Juhász Gyula Faculty of Education</p>
+                        <p class="education-details">Incomplete - 2 semesters completed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's connect and collaborate</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>Email</h3>
+                            <p>emese.gojdar@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Location</h3>
+                            <p>Salzburg, Austria</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/emesegojdar/" target="_blank" class="social-link">
+                            <img src="assets/linkedin1.png" alt="LinkedIn">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/placcky" target="_blank" class="social-link">
+                            <img src="assets/github(1).png" alt="GitHub">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="mailto:emese.gojdar@gmail.com" class="social-link">
+                            <img src="assets/mail.png" alt="Email">
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <div class="footer-shadow"></div>
-    <footer>
-        <div class="footer">
-        &copy;  Portfolio of Emese Gojdar, © Copyright 2024 Emese Gojdar. All rights reserved.<br>
-        Department of Geoinformatics – Z_GIS<br>
-        Schillerstraße 30<br>
-        5020 Salzburg<br>
-        Austria
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Emese Gojdar. All rights reserved.</p>
+                    <div class="footer-address">
+                        <p>Department of Geoinformatics – Z_GIS</p>
+                        <p>Schillerstraße 30, 5020 Salzburg, Austria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
