@@ -792,11 +792,10 @@ section {
    ======================== */
 
 /* Blog-specific styles */
-        .blog-hero-section {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
-            text-align: center;
-        }
+.blog-post-hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
+}
 
         .blog-posts-section {
             background: var(--light-bg);
@@ -867,11 +866,11 @@ section {
             font-weight: 500;
         }
 
-        .blog-title {
+        .blog-title-c {
             margin-bottom: 15px;
         }
 
-        .blog-title a {
+        .blog-title-c a {
             color: var(--primary-color);
             text-decoration: none;
             font-size: 1.4rem;
@@ -880,7 +879,7 @@ section {
             transition: var(--transition);
         }
 
-        .blog-title a:hover {
+        .blog-title-c a:hover {
             color: var(--secondary-color);
         }
 
@@ -1055,19 +1054,13 @@ section {
    BLOG POST PAGE STYLES
    ======================== */
 
-.blog-header {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 40px 0;
-    background: linear-gradient(135deg, rgba(255, 250, 240, 0.1) 0%, rgba(131, 80, 44, 0.05) 100%);
-    border-radius: var(--border-radius);
-}
-.blog-title {
+.blog-header .blog-title {
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 20px;
     line-height: 1.1;
+    text-align: center;
 }
 
 .blog-subtitle {
@@ -1090,12 +1083,12 @@ section {
 
 
 .blog-content-big {
-    max-width: 900px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 50px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px var(--shadow);
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    padding: 50px !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: 0 10px 30px var(--shadow) !important;
 }
 
 .blog-text {
