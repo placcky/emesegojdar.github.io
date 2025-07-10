@@ -85,4 +85,60 @@ document.addEventListener("DOMContentLoaded", () => {
 //    navMenu.classList.toggle('active');
 //});
 
-
+// Certificate Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Create modal HTML structure
+    const modalHTML = `
+        <div id="certificateModal" class="certificate-modal">
+            <div class="certificate-modal-content">
+                <span class="certificate-modal-close">&times;</span>
+                <img id="modalImage" src="" alt="Certificate">
+            </div>
+        </div>
+    `;
+    
+    // Add modal to the body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Get modal elements
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.certificate-modal-close');
+    
+    // Get all certificate images
+    const certificateImages = document.querySelectorAll('.cert-img');
+    
+    // Add click event to each certificate image
+    certificateImages.forEach(function(img) {
+        img.addEventListener('click', function() {
+            modal.style.display = 'block';
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Close modal when clicking the X button
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
