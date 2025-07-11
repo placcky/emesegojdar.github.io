@@ -380,6 +380,14 @@ section {
     font-weight: 500;
 }
 
+.icon {
+  height: 40px;            /* ez szabályozza a méretet */
+  width: auto;             /* arányok megtartása */
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
 /* Cards Layout */
 .volunteer-grid,
 .education-grid {
@@ -798,7 +806,7 @@ section {
 }
 
         .blog-posts-section {
-            background: var(--light-bg);
+            /* background: var(--light-bg); */ 
             padding: var(--section-padding);
         }
 
