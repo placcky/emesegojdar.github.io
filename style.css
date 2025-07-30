@@ -5,10 +5,10 @@
 
 /* CSS Variables for consistent theming */
 :root {
-    --primary-color: #2E1300;
-    --secondary-color: #83502C;
-    --accent-color: #FFFAF0;
-    --text-color: #2E1300;
+    --primary-color: #BF9393;
+    --secondary-color: #A6495A;
+    --accent-color: #BFBBBA;
+    --text-color: #593831;
     --light-bg: #FFFAF0f3;
     --shadow: rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
@@ -53,7 +53,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(46, 19, 0, 0.95);
+    background: #A68077;
     backdrop-filter: blur(10px);
     transition: var(--transition);
 }
